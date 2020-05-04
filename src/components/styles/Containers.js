@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const FullPageContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	height: 98vh;
 `;
 

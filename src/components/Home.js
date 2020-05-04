@@ -6,8 +6,10 @@ import Input from './shared/Input';
 const Home = () => {
 	return (
 		<FullPageContainer>
-			<h1>Qué es para vos tu hogar?</h1>
-			<Input />
+			<div>
+				<h1>Qué es para vos tu hogar?</h1>
+				<Input />
+			</div>
 		</FullPageContainer>
 	);
 };

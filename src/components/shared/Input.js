@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import './../../App.css';
 
 class BasicForm extends React.Component {
 	constructor(props) {
@@ -35,15 +36,28 @@ const StyledInput = styled.input`
 	font-size: 2rem;
 	padding: 1rem 2rem;
 	margin: 0 2rem 1rem 0;
-	width: 100%;
+	width: 40rem;
+	border-radius: .3rem;
+	border: 2px solid black;
 `;
 
-const StyledButton = styled.input`padding: 1rem 2rem;`;
+const StyledButton = styled.input`
+	padding: 1rem 2rem;
+	background-color: white;
+	border: 2px solid black;
+	border-radius: .3rem;
+
+	&:hover {
+		background-color: var(--custom-green);
+		cursor: pointer;
+	}
+`;
 
 const StyledForm = styled.form`
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;
+	width: 50rem;
 `;
 
 export default BasicForm;
