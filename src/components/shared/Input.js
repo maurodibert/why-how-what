@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import './../../App.css';
 
 class BasicForm extends React.Component {
@@ -17,6 +18,7 @@ class BasicForm extends React.Component {
 
 	handleSubmit(e) {
 		alert(this.state.value);
+
 		e.preventDefault();
 	}
 
@@ -32,13 +34,18 @@ class BasicForm extends React.Component {
 	}
 }
 
-const StyledInput = styled.input`
-	font-size: 2rem;
+const StyledInput = styled.textarea`
+	font-size: 1.4rem;
 	padding: 1rem 2rem;
 	margin: 0 2rem 1rem 0;
 	width: 40rem;
 	border-radius: .3rem;
 	border: 2px solid black;
+
+	&:focus {
+		outline-color: var(--custom-green);
+		border: 1px solid grey;
+	}
 `;
 
 const StyledButton = styled.input`
