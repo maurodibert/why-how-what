@@ -53,10 +53,12 @@ const StyledButton = styled.input`
 	background-color: white;
 	border: 2px solid black;
 	border-radius: .3rem;
+	transition: .5s ease-in-out;
 
 	&:hover {
 		background-color: var(--custom-green);
 		cursor: pointer;
+		transition: .5s ease-in-out;
 	}
 `;
 
