@@ -6,7 +6,6 @@ import './App.css';
 function App() {
 	return (
 		<Router>
-			<Home />
 			<Switch>
 				<Route exact path="/">
 					<Home />
