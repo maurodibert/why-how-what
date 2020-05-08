@@ -9,6 +9,10 @@ h1 {
 	font-size: 3.6rem;
 }
 
+h3 {
+	font-size: 2rem;
+}
+
 /* colors */
 :root {
 	--custom-green: #8ff9a0;
