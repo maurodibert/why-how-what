@@ -5,10 +5,10 @@ import styled from 'styled-components';
 const HomeForUs = () => {
 	const list = [
 		{ regular: 'un lugar donde pueda descansar.', bold: 'Una pausa' },
-		{ regular: 'un lugar donde mi familia se sienta protegida.', bold: 'Una pausa' },
-		{ regular: 'un lugar que no te consuma sino provea.', bold: 'Una pausa' },
-		{ regular: 'un lugar del que no te quieras ir.', bold: 'Una pausa' },
-		{ regular: 'un lugar que haga por nosotros.', bold: 'Una pausa' }
+		{ regular: 'un lugar donde mi familia se sienta protegida.', bold: 'Un espacio seguro' },
+		{ regular: 'un lugar que no te consuma sino provea.', bold: 'Un ambiente sostenible' },
+		{ regular: 'un lugar del que no te quieras ir.', bold: 'Una zona de placer' },
+		{ regular: 'un lugar que haga por nosotros.', bold: 'Un organismo inteligente' }
 	];
 
 	return (
