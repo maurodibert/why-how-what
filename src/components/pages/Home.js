@@ -1,5 +1,5 @@
 import React from 'react';
-import FullPageContainer from '../styles/Containers';
+import { FullPageContainer } from '../styles/Containers';
 import Input from '../shared/Input';
 // import Next from './styles/Buttons';
 
