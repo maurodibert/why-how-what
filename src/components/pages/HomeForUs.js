@@ -5,6 +5,7 @@ import FullPageContainer from '../styles/Containers';
 import styled from 'styled-components';
 import { FlexRow } from '../styles/Containers';
 import { StyledButton } from '../styles/Buttons';
+import { StyledLi, StyledUl } from '../styles/Lists';
 
 const HomeForUs = () => {
 	const list = [
@@ -37,15 +38,5 @@ const HomeForUs = () => {
 		</FullPageContainer>
 	);
 };
-
-const StyledLi = styled.li`
-	list-style: none;
-	font-size: 2rem;
-`;
-
-const StyledUl = styled.ul`
-	padding: 0;
-	margin: 0;
-`;
 
 export default HomeForUs;

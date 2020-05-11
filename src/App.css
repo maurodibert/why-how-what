@@ -18,7 +18,19 @@ p {
 	font-size: 1.6rem;
 }
 
+a {
+	text-decoration: none;
+	color: black;
+	transition: .3s ease-out;
+}
+
+a:hover {
+	color: var(--custom-green);
+	transition: .3s ease-out;
+}
+
 /* colors */
 :root {
 	--custom-green: #8ff9a0;
+	--custom-red: #ec1e1e;
 }
