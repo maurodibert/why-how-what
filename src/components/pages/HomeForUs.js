@@ -1,21 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import FullPageContainer from '../styles/Containers';
 import styled from 'styled-components';
+import { FlexRow } from '../styles/Containers';
+import { StyledButton } from '../styles/Buttons';
 
 const HomeForUs = () => {
 	const list = [
-		{ regular: 'un lugar donde pueda descansar.', bold: 'Una pausa' },
-		{ regular: 'un lugar donde mi familia se sienta protegida.', bold: 'Un espacio seguro' },
-		{ regular: 'un lugar que no te consuma sino provea.', bold: 'Un ambiente sostenible' },
-		{ regular: 'un lugar del que no te quieras ir.', bold: 'Una zona de placer' },
-		{ regular: 'un lugar que haga por nosotros.', bold: 'Un organismo inteligente' }
+		{ regular: 'Un lugar donde pueda descansar.', bold: 'Una pausa' },
+		{ regular: 'Un lugar donde mi familia se sienta protegida.', bold: 'Un espacio seguro' },
+		{ regular: 'Un lugar que no te consuma sino provea.', bold: 'Un ambiente sostenible' },
+		{ regular: 'Un lugar del que no te quieras ir.', bold: 'Una zona de placer' },
+		{ regular: 'Un lugar que haga por nosotros.', bold: 'Un organismo inteligente' }
 	];
 
 	return (
 		<FullPageContainer>
 			<div>
 				<h1>Para nosotros un hogar es</h1>
-				<StyledDiv>
+				<FlexRow>
 					<StyledUl>
 						{list.map((item, index) => {
 							return (
@@ -25,16 +29,14 @@ const HomeForUs = () => {
 							);
 						})}
 					</StyledUl>
-				</StyledDiv>
+				</FlexRow>
+				<Link to="/how-we-do">
+					<StyledButton>Continuar</StyledButton>
+				</Link>
 			</div>
 		</FullPageContainer>
 	);
 };
-
-const StyledDiv = styled.div`
-	display: flex;
-	flex-direction: row;
-`;
 
 const StyledLi = styled.li`
 	list-style: none;

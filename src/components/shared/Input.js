@@ -17,9 +17,9 @@ class BasicForm extends React.Component {
 	}
 
 	handleSubmit(e) {
-		alert(this.state.value);
-
+		// alert(this.state.value);
 		e.preventDefault();
+		this.props.history.push(this.props.goto);
 	}
 
 	render() {
@@ -28,7 +28,7 @@ class BasicForm extends React.Component {
 				<label>
 					<StyledInput type="text" value={this.state.value} onChange={this.handleChange} />
 				</label>
-				<StyledButton type="submit" value="continuar" />
+				<StyledButton type="submit" value="Continuar" />
 			</StyledForm>
 		);
 	}
@@ -59,6 +59,11 @@ const StyledButton = styled.input`
 		background-color: var(--custom-green);
 		cursor: pointer;
 		transition: .5s ease-in-out;
+	}
+
+	&:focus {
+		outline-color: var(--custom-green);
+		border: 2px solid darkgrey;
 	}
 `;
 
