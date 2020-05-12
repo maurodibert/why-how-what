@@ -8,7 +8,7 @@ const HowWeDo = () => {
 	return (
 		<FullPageContainer>
 			<FlexColumn>
-				<h1>Cómo logramos esto?</h1>
+				<h2>Cómo logramos esto?</h2>
 				<FlexRow>
 					<ExactaFundamental />
 				</FlexRow>

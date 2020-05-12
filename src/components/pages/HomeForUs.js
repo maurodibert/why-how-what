@@ -19,7 +19,7 @@ const HomeForUs = () => {
 	return (
 		<FullPageContainer>
 			<div>
-				<h1>Para nosotros un hogar es</h1>
+				<h2>Para nosotros un hogar es</h2>
 				<FlexRow>
 					<StyledUl>
 						{list.map((item, index) => {

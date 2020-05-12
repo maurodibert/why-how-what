@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledLi = styled.li`
 	list-style: none;
-	font-size: 2rem;
+	margin: 1rem 0;
 `;
 
 const StyledUl = styled.ul`

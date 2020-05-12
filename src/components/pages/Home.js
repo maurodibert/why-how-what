@@ -7,7 +7,7 @@ const Home = (props) => {
 	return (
 		<FullPageContainer>
 			<div>
-				<h1>Qué es para vos tu hogar?</h1>
+				<h2>Qué es para vos tu hogar?</h2>
 				<Input goto="/home-for-us" history={props.history} />
 			</div>
 		</FullPageContainer>

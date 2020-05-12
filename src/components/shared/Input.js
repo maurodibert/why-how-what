@@ -38,7 +38,8 @@ const StyledInput = styled.textarea`
 	font-size: 1.4rem;
 	padding: 1rem 2rem;
 	margin: 0 2rem 1rem 0;
-	width: 40rem;
+	width: 50rem;
+	height: 5rem;
 	border-radius: .3rem;
 	border: 2px solid black;
 
