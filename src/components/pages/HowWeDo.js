@@ -8,7 +8,7 @@ const HowWeDo = () => {
 	return (
 		<FullPageContainer>
 			<FlexColumn>
-				<h2>Cómo logramos esto?</h2>
+				<StyledH2>Cómo logramos esto?</StyledH2>
 				<FlexRow>
 					<ExactaFundamental />
 				</FlexRow>
@@ -55,7 +55,7 @@ const ExactaFundamental = () => {
 };
 
 const StyledP = styled.p`margin: 1rem 1rem 2rem 0;`;
-
+const StyledH2 = styled.h2`margin-bottom: 2rem;`;
 const StyledFlexColumn = styled(FlexColumn)`
 	justify-content: space-between;
 	width: 20rem;

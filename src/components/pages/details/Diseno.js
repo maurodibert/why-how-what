@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FullPageContainer, FlexColumn, FlexRow } from '../../styles/Containers';
 import { StyledLi, StyledUl } from '../../styles/Lists';
+import { StyledButton } from '../../styles/Buttons';
 import ExactaVR from '../../../assets/exacta-vr.png';
 import styled from 'styled-components';
 
@@ -26,11 +28,11 @@ const Diseno = (props) => {
 
 	return (
 		<FullPageContainer>
-			<StyledDiv>
-				<h1>diseño</h1>
+			<div>
+				<StyledH1>diseño</StyledH1>
 				<FlexRow>
 					<StyledFlexColumn>
-						<img src={ExactaVR} alt="Exacta VR" />
+						<img src={ExactaVR} width="200px" alt="Exacta VR" />
 					</StyledFlexColumn>
 					<StyledFlexColumn>
 						<StyledUl>
@@ -48,22 +50,29 @@ const Diseno = (props) => {
 						<StyledP>
 							<i>{description}</i>
 						</StyledP>
+						<Link to={'/how-we-do'}>
+							<StyledButton>Volver</StyledButton>
+						</Link>
 					</StyledFlexColumn>
 				</FlexRow>
-			</StyledDiv>
+			</div>
 		</FullPageContainer>
 	);
 };
 
+const StyledH1 = styled.h1`margin-left: 2.9rem;`;
 const StyledP = styled.p`margin-top: 0;`;
 const ReStyledLi = styled(StyledLi)`
 	&:first-child {
 		margin-top: 0;
 	}
 `;
-const StyledDiv = styled.div`width: 60%;`;
 const StyledFlexColumn = styled(FlexColumn)`
 	margin: 0 2rem;
+	width: 20rem;
+	&:first-child {
+		margin: 0;
+	}
 `;
 
 export default Diseno;

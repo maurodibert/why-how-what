@@ -5,7 +5,7 @@ const FullPageContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 98vh;
+	height: 96vh;
 `;
 
 const FlexRow = styled.div`
