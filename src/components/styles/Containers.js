@@ -8,6 +8,15 @@ const FullPageContainer = styled.div`
 	height: 96vh;
 `;
 
+const FullPageContainerFromTop = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding-top: 20rem;
+	align-items: center;
+	height: 66vh;
+`;
+
 const FlexRow = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -18,6 +27,6 @@ const FlexColumn = styled.div`
 	flex-direction: column;
 `;
 
-export { FullPageContainer, FlexRow, FlexColumn };
+export { FullPageContainer, FullPageContainerFromTop, FlexRow, FlexColumn };
 
 export default FullPageContainer;

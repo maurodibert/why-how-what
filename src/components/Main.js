@@ -5,12 +5,13 @@ import HomeForUs from './pages/HomeForUs';
 import NotFound from './pages/NotFound';
 import HowWeDo from './pages/HowWeDo';
 import Diseno from './pages/details/Diseno';
+import SistemaDeTrabajo from './pages/details/SistemaDeTrabajo';
 
 const Main = () => {
 	return (
 		<main>
 			<Switch>
-				{/* <Route exact path="/sistema-de-trabajo" component={Details} /> */}
+				<Route exact path="/sistema-de-trabajo" component={SistemaDeTrabajo} />
 				<Route exact path="/diseño" component={Diseno} />
 				{/* <Route exact path="/planificacion" component={Details} /> */}
 				<Route exact path="/home-for-us" component={HomeForUs} />
