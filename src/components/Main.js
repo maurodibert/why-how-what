@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound';
 import HowWeDo from './pages/HowWeDo';
 import Diseno from './pages/details/Diseno';
 import SistemaDeTrabajo from './pages/details/SistemaDeTrabajo';
+import WhyWeDo from './pages/WhyWeDo';
 
 const Main = () => {
 	return (
@@ -14,6 +15,7 @@ const Main = () => {
 				<Route exact path="/sistema-de-trabajo" component={SistemaDeTrabajo} />
 				<Route exact path="/diseño" component={Diseno} />
 				{/* <Route exact path="/planificacion" component={Details} /> */}
+				<Route exact path="/why-we-do" component={WhyWeDo} />
 				<Route exact path="/home-for-us" component={HomeForUs} />
 				<Route exact path="/how-we-do" component={HowWeDo} />
 				<Route exact path="/" component={Home} />

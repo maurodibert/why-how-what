@@ -12,7 +12,9 @@ const HowWeDo = () => {
 				<FlexRow>
 					<ExactaFundamental />
 				</FlexRow>
-				<StyledButton>Continuar</StyledButton>
+				<Link to="/why-we-do">
+					<StyledButton>Continuar</StyledButton>
+				</Link>
 			</FlexColumn>
 		</FullPageContainer>
 	);
