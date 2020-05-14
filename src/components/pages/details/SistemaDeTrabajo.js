@@ -41,7 +41,7 @@ const SistemaDeTrabajo = () => {
 			description={description}
 			image={TrabajoEnEquipo}
 			altImage={altImage}
-			imageSize="210px"
+			imageSize="420px"
 		/>
 	);
 };

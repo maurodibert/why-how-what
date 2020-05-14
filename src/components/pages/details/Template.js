@@ -9,7 +9,7 @@ const Template = ({ title, list, description, image, altImage, imageSize }) => {
 	return (
 		<FullPageContainerFromTop>
 			<div>
-				<StyledH1>{title}</StyledH1>
+				<h1>{title}</h1>
 				<FlexRow>
 					<StyledFlexColumn>
 						<img src={image} width={imageSize} alt={altImage} />
@@ -40,7 +40,6 @@ const Template = ({ title, list, description, image, altImage, imageSize }) => {
 	);
 };
 
-const StyledH1 = styled.h1`margin-left: 2.9rem;`;
 const StyledP = styled.p`margin-top: 0;`;
 const ReStyledLi = styled(StyledLi)`
 	&:first-child {
@@ -52,6 +51,7 @@ const StyledFlexColumn = styled(FlexColumn)`
 	width: 20rem;
 	&:first-child {
 		margin: 0;
+		width: 40rem;
 	}
 `;
 

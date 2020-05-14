@@ -31,7 +31,7 @@ const Diseno = () => {
 			description={description}
 			image={ExactaVR}
 			altImage={altImage}
-			imageSize="210px"
+			imageSize="420px"
 		/>
 	);
 };
