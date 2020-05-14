@@ -15,16 +15,16 @@ const WhyWeDo = () => {
 				<FlexRow>
 					<StyledUl>
 						<ReStyledLi>
-							porque <b>respiramos orden,</b>
+							porque <b>respiramos orden</b>
 						</ReStyledLi>
 						<ReStyledLi>
-							porque <b>vivimos diseño,</b>
+							porque <b>vivimos diseño</b>
 						</ReStyledLi>
 						<ReStyledLi>
-							porque <b>nos apasiona...</b>
+							porque <b>nos apasiona</b>
 						</ReStyledLi>
 						<ReStyledLi>
-							y <b>porque podemos.</b>
+							y <b>porque podemos</b>
 						</ReStyledLi>
 					</StyledUl>
 				</FlexRow>
