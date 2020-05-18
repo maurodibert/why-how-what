@@ -6,8 +6,6 @@ import { FlexRow } from '../styles/Containers';
 import { StyledButton } from '../styles/Buttons';
 import { StyledLi, StyledUl } from '../styles/Lists';
 
-import { motion } from 'framer-motion';
-
 const HomeForUs = () => {
 	const list = [
 		{ id: 1, regular: 'Un lugar donde mi familia se sienta protegida.', bold: 'Un espacio seguro' },
@@ -17,19 +15,32 @@ const HomeForUs = () => {
 		{ id: 5, regular: 'Un lugar que haga por nosotros.', bold: 'Un organismo inteligente' }
 	];
 
+	const containerVariants = {
+		before: {},
+		after: { transition: { staggerChildren: 3 } }
+	};
+
+	const itemVariants = {
+		before: {
+			y: -16 * 1.2,
+			opacity: 0
+		},
+		after: {
+			y: 0,
+			opacity: 1,
+			transition: { ease: 'easeInOut', duration: 2 }
+		}
+	};
+
 	return (
 		<FullPageContainer>
 			<div>
 				<h2>Para nosotros un hogar es</h2>
 				<FlexRow>
-					<StyledUl>
+					<StyledUl variants={containerVariants} initial={'before'} animate={'after'}>
 						{list.map((item, index) => {
 							return (
-								<StyledLi
-									animate={{ y: [ -50, 0 ], opacity: [ 0, 1 ] }}
-									transition={{ ease: 'easeInOut', duration: 2 }}
-									key={index}
-								>
+								<StyledLi variants={itemVariants} key={index}>
 									{item.regular} <b>{item.bold}</b>
 								</StyledLi>
 							);

@@ -6,7 +6,7 @@ const StyledLi = styled(motion.li)`
 	margin: 1rem 0;
 `;
 
-const StyledUl = styled.ul`
+const StyledUl = styled(motion.ul)`
 	padding: 0;
 	margin: 0;
 `;
