@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-const StyledLi = styled.li`
+const StyledLi = styled(motion.li)`
 	list-style: none;
 	margin: 1rem 0;
 `;
