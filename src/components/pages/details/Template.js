@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FullPageContainerFromTop, FlexColumn, FlexRow } from '../../styles/Containers';
+import { FullPageContainer, FlexColumn, FlexRow } from '../../styles/Containers';
 import { StyledLi, StyledUl } from '../../styles/Lists';
 import { StyledButton } from '../../styles/Buttons';
 import styled from 'styled-components';
 
 const Template = ({ title, list, description, image, altImage, imageSize }) => {
 	return (
-		<FullPageContainerFromTop>
+		<FullPageContainer>
 			<div>
 				<h1>{title}</h1>
 				<FlexRow>
@@ -36,7 +36,7 @@ const Template = ({ title, list, description, image, altImage, imageSize }) => {
 					</StyledFlexColumn>
 				</FlexRow>
 			</div>
-		</FullPageContainerFromTop>
+		</FullPageContainer>
 	);
 };
 
