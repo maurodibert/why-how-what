@@ -1,15 +1,36 @@
 import React from 'react';
+
 import { FullPageContainer } from '../styles/Containers';
 import Input from '../shared/Input';
-// import Next from './styles/Buttons';
+
+import { motion } from 'framer-motion';
 
 const Home = (props) => {
+	const containerVariants = {
+		before: {},
+		after: { transition: { staggerChildren: 7 } }
+	};
+
+	const childVariants = {
+		before: {
+			y: [ -36 * 1.2 ],
+			opacity: 0
+		},
+		after: {
+			y: 0,
+			opacity: 1,
+			transition: { ease: 'easeInOut', duration: 4 }
+		}
+	};
+
 	return (
 		<FullPageContainer>
-			<div>
-				<h2>Qué es para vos tu hogar?</h2>
-				<Input goto="/home-for-us" history={props.history} />
-			</div>
+			<motion.div variants={containerVariants} initial="before" animate="after">
+				<motion.h2 variants={childVariants}>Qué es para vos tu hogar?</motion.h2>
+				<motion.div variants={childVariants}>
+					<Input goto="/home-for-us" history={props.history} />
+				</motion.div>
+			</motion.div>
 		</FullPageContainer>
 	);
 };
