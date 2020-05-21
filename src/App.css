@@ -1,5 +1,5 @@
 html {
-	font-family: 'Muli', sans-serif;
+	font-family: 'Playfair Display', serif;
 	font-weight: 200;
 	font-size: 11px;
 }
@@ -8,11 +8,13 @@ html {
 h1 {
 	font-size: 5rem;
 	margin-bottom: 1rem;
+	line-height: .2rem;
 }
 
 h2 {
 	font-size: 3.6rem;
 	margin-bottom: 1rem;
+	line-height: 1rem;
 }
 
 h3 {

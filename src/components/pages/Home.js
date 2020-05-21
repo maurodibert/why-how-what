@@ -1,38 +1,46 @@
 import React from 'react';
-
+import styled from 'styled-components';
 import { FullPageContainer } from '../styles/Containers';
-import Input from '../shared/Input';
 
 import { motion } from 'framer-motion';
 
 const Home = (props) => {
-	const containerVariants = {
-		before: {},
-		after: { transition: { staggerChildren: 7 } }
-	};
-
-	const childrenVariants = {
-		before: {
-			y: [ -36 * 1.2 ],
-			opacity: 0
-		},
-		after: {
-			y: 0,
-			opacity: 1,
-			transition: { ease: 'easeInOut', duration: 4 }
-		}
-	};
-
 	return (
 		<FullPageContainer>
-			<motion.div variants={containerVariants} initial="before" animate="after">
-				<motion.h2 variants={childrenVariants}>Qué es para vos tu hogar?</motion.h2>
-				<motion.div variants={childrenVariants}>
-					<Input goto="/home-for-us" history={props.history} />
-				</motion.div>
-			</motion.div>
+			<StyledDiv>
+				<motion.h1
+					initial={{ y: (12 + 50) * 3 }}
+					animate={{ y: -26, transition: { ease: 'easeOut', duration: 3 } }}
+				>
+					Qué es
+				</motion.h1>
+				<motion.h1
+					initial={{ y: (12 + 50) * 3 }}
+					animate={{ y: -26, transition: { ease: 'easeOut', duration: 3.2 } }}
+				>
+					para vos
+				</motion.h1>
+				<motion.h1
+					initial={{ y: (12 + 50) * 3 }}
+					animate={{ y: -26, transition: { ease: 'easeOut', duration: 3.4 } }}
+					whileHover={{
+						skew: -5
+					}}
+				>
+					tu hogar?
+				</motion.h1>
+			</StyledDiv>
 		</FullPageContainer>
 	);
 };
+
+const StyledDiv = styled(motion.div)`
+	overflow: hidden;
+	height: 19rem;
+	border-bottom: 1px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+`;
 
 export default Home;
