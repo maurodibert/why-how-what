@@ -6,6 +6,8 @@ import { FlexRow } from '../styles/Containers';
 import { StyledButton } from '../styles/Buttons';
 import { StyledLi, StyledUl } from '../styles/Lists';
 
+import { motion } from 'framer-motion';
+
 const HomeForUs = () => {
 	const list = [
 		{ id: 1, regular: 'Un lugar donde mi familia se sienta protegida.', bold: 'Un espacio seguro' },
@@ -17,10 +19,27 @@ const HomeForUs = () => {
 
 	const containerVariants = {
 		before: {},
+		after: { transition: { staggerChildren: 7 } }
+	};
+
+	const childrenVariants = {
+		before: {
+			y: [ -36 * 1.2 ],
+			opacity: 0
+		},
+		after: {
+			y: 0,
+			opacity: 1,
+			transition: { ease: 'easeInOut', duration: 4 }
+		}
+	};
+
+	const ulVariants = {
+		before: {},
 		after: { transition: { staggerChildren: 3 } }
 	};
 
-	const itemVariants = {
+	const liVariants = {
 		before: {
 			y: -16 * 1.2,
 			opacity: 0
@@ -34,13 +53,13 @@ const HomeForUs = () => {
 
 	return (
 		<FullPageContainer>
-			<div>
-				<h2>Para nosotros un hogar es</h2>
+			<motion.div variants={containerVariants} initial="before" animate="after">
+				<motion.h2 variants={childrenVariants}>Para nosotros un hogar es</motion.h2>
 				<FlexRow>
-					<StyledUl variants={containerVariants} initial={'before'} animate={'after'}>
+					<StyledUl variants={childrenVariants}>
 						{list.map((item, index) => {
 							return (
-								<StyledLi variants={itemVariants} key={index}>
+								<StyledLi variants={liVariants} key={index}>
 									{item.regular} <b>{item.bold}</b>
 								</StyledLi>
 							);
@@ -50,7 +69,7 @@ const HomeForUs = () => {
 				<Link to="/how-we-do">
 					<StyledButton>Continuar</StyledButton>
 				</Link>
-			</div>
+			</motion.div>
 		</FullPageContainer>
 	);
 };

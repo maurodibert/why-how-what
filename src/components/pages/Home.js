@@ -11,7 +11,7 @@ const Home = (props) => {
 		after: { transition: { staggerChildren: 7 } }
 	};
 
-	const childVariants = {
+	const childrenVariants = {
 		before: {
 			y: [ -36 * 1.2 ],
 			opacity: 0
@@ -26,8 +26,8 @@ const Home = (props) => {
 	return (
 		<FullPageContainer>
 			<motion.div variants={containerVariants} initial="before" animate="after">
-				<motion.h2 variants={childVariants}>Qué es para vos tu hogar?</motion.h2>
-				<motion.div variants={childVariants}>
+				<motion.h2 variants={childrenVariants}>Qué es para vos tu hogar?</motion.h2>
+				<motion.div variants={childrenVariants}>
 					<Input goto="/home-for-us" history={props.history} />
 				</motion.div>
 			</motion.div>
