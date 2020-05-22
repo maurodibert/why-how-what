@@ -12,19 +12,19 @@ const Home = (props) => {
 			<StyledDiv>
 				<motion.h1
 					initial={{ y: (12 + 50) * 3 }}
-					animate={{ y: -26, transition: { ease: 'easeOut', duration: 3 } }}
+					animate={{ y: -26, transition: { ease: 'backInOut', duration: 2 } }}
 				>
 					Qué es
 				</motion.h1>
 				<motion.h1
 					initial={{ y: (12 + 50) * 3 }}
-					animate={{ y: -26, transition: { ease: 'easeOut', duration: 3.2 } }}
+					animate={{ y: -26, transition: { ease: 'backInOut', duration: 2.2 } }}
 				>
 					para vos
 				</motion.h1>
 				<StyledTriggerText
 					initial={{ y: (12 + 50) * 3 }}
-					animate={{ y: -26, transition: { ease: 'easeOut', duration: 3.4 } }}
+					animate={{ y: +valueUnderText == -200 ? -26 : 0, transition: { ease: 'backInOut', duration: 2.4 } }}
 					onHoverStart={(e) => {
 						setValueUnderText(0);
 					}}
@@ -34,11 +34,12 @@ const Home = (props) => {
 				>
 					tu hogar?
 				</StyledTriggerText>
+				<BottomLine initial={{ x: -260 }} animate={{ x: 0, transition: { ease: 'easeIn', duration: 1 } }} />
 			</StyledDiv>
 			<StyledOnHoverText>
 				<StyledUnderText
 					initial={{ y: -200 }}
-					animate={{ y: +valueUnderText, transition: { ease: 'easeOut', duration: 1 } }}
+					animate={{ y: +valueUnderText, transition: { ease: 'anticipate', duration: 2 } }}
 				>
 					hogar
 				</StyledUnderText>
@@ -47,10 +48,12 @@ const Home = (props) => {
 	);
 };
 
+const BottomLine = styled(motion.div)`
+	border-bottom: 1.5px solid;
+`;
 const StyledDiv = styled(motion.div)`
 	overflow: hidden;
 	height: 19rem;
-	border-bottom: 1px solid;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
@@ -64,13 +67,14 @@ const StyledOnHoverText = styled(motion.div)`
 	position: relative;
 	left: -5rem;
 	top: 0;
-	font-family: 'Lobster Two', cursive;
-	font-weight: bold;
-	color: var(--red);
+
 `;
 
 const StyledUnderText = styled(motion.h1)`
 	position: relative;
 	top: -1rem;
+	font-family: 'Lobster Two', cursive;
+	font-weight: bold;
+	color: var(--red);
 `;
 export default Home;
