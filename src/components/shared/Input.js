@@ -3,68 +3,27 @@ import styled from 'styled-components';
 // import { Link } from 'react-router-dom';
 import './../../App.css';
 
-class BasicForm extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { value: '' };
+const BasicForm = ({ handleChange, handleSubmit }) => {
+	return (
+		<StyledForm onSubmit={handleSubmit}>
+			<label>
+				<StyledInput type="text" onChange={handleChange} placeholder="Mi hogar es..." />
+			</label>
+		</StyledForm>
+	);
+};
 
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	handleChange(e) {
-		this.setState({ value: e.target.value });
-	}
-
-	handleSubmit(e) {
-		// alert(this.state.value);
-		e.preventDefault();
-		this.props.history.push(this.props.goto);
-	}
-
-	render() {
-		return (
-			<StyledForm onSubmit={this.handleSubmit}>
-				<label>
-					<StyledInput type="text" value={this.state.value} onChange={this.handleChange} />
-				</label>
-				<StyledButton type="submit" value="Continuar" />
-			</StyledForm>
-		);
-	}
-}
-
-const StyledInput = styled.textarea`
+const StyledInput = styled.input`
+	font-family: 'Playfair Display', serif;
 	font-size: 1.4rem;
 	padding: 1rem 2rem;
-	margin: 0 2rem 1rem 0;
-	width: 50rem;
-	height: 5rem;
-	border-radius: .3rem;
-	border: 2px solid black;
+	border: none;
+	border-bottom: 1px dashed black;
 
 	&:focus {
-		outline-color: var(--custom-green);
-		border: 2px solid darkgrey;
-	}
-`;
-
-const StyledButton = styled.input`
-	padding: 1rem 2rem;
-	background-color: white;
-	border: 2px solid black;
-	border-radius: .3rem;
-	transition: .5s ease-in-out;
-
-	&:hover {
-		background-color: var(--custom-green);
-		cursor: pointer;
-		transition: .5s ease-in-out;
-	}
-
-	&:focus {
-		outline-color: var(--custom-green);
-		border: 2px solid darkgrey;
+		outline: none;
+		border: none;
+		border-bottom: 1px dashed black;
 	}
 `;
 
@@ -72,7 +31,6 @@ const StyledForm = styled.form`
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;
-	width: 50rem;
 `;
 
 export default BasicForm;

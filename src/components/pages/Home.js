@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FullPageContainer } from '../styles/Containers';
 
+import Input from '../shared/Input';
+
 import { motion } from 'framer-motion';
 
-const Home = (props) => {
+const Home = ({ userMessage, handleChange, handleSubmit }) => {
 	const [ valueUnderText, setValueUnderText ] = useState(-200);
+	const [ isVisible, setIsVisible ] = useState(0);
 
 	return (
 		<FullPageContainer>
@@ -24,26 +27,36 @@ const Home = (props) => {
 				</motion.h1>
 				<StyledTriggerText
 					initial={{ y: (12 + 50) * 3 }}
-					animate={{ y: +valueUnderText == -200 ? -26 : 0, transition: { ease: 'backInOut', duration: 2.4 } }}
+					animate={{
+						y: +valueUnderText === -200 ? -26 : 0,
+						transition: { ease: 'backInOut', duration: 2.4 }
+					}}
 					onHoverStart={(e) => {
 						setValueUnderText(0);
 					}}
 					onHoverEnd={(e) => {
 						setValueUnderText(-200);
 					}}
+					onClick={(e) => {
+						setIsVisible(isVisible === 0 ? 1 : 0);
+					}}
 				>
 					tu hogar?
 				</StyledTriggerText>
 				<BottomLine initial={{ x: -260 }} animate={{ x: 0, transition: { ease: 'easeIn', duration: 1 } }} />
 			</StyledDiv>
-			<StyledOnHoverText>
+			<StyledUnderTextDiv>
 				<StyledUnderText
 					initial={{ y: -200 }}
 					animate={{ y: +valueUnderText, transition: { ease: 'anticipate', duration: 2 } }}
 				>
 					hogar
 				</StyledUnderText>
-			</StyledOnHoverText>
+			</StyledUnderTextDiv>
+			<motion.div animate={{ opacity: isVisible, transition: { ease: 'easeInOut', duration: 1 } }}>
+				<Input handleChange={handleChange} handleSubmit={handleSubmit} />
+			</motion.div>
+			<div>{userMessage}</div>
 		</FullPageContainer>
 	);
 };
@@ -61,7 +74,7 @@ const StyledDiv = styled(motion.div)`
 
 const StyledTriggerText = styled(motion.h1)`cursor: pointer;`;
 
-const StyledOnHoverText = styled(motion.div)`
+const StyledUnderTextDiv = styled(motion.div)`
 	overflow: hidden;
 	height: 7rem;
 	position: relative;
