@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { FullPageContainer } from '../styles/Containers';
-
 import Input from '../shared/Input';
 
-import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import { FullPageContainer } from '../styles/Containers';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Home = ({ userMessage, handleChange, handleSubmit }) => {
 	const [ valueUnderText, setValueUnderText ] = useState(-200);
 	const [ isVisible, setIsVisible ] = useState(0);
 
+	const splittedUserMessage = userMessage.split(' ');
+
 	return (
 		<FullPageContainer>
-			<StyledDiv>
+			<MainTitleDiv>
 				<motion.h1
 					initial={{ y: (12 + 50) * 3 }}
 					animate={{ y: -26, transition: { ease: 'backInOut', duration: 2 } }}
@@ -44,27 +45,74 @@ const Home = ({ userMessage, handleChange, handleSubmit }) => {
 					tu hogar?
 				</StyledTriggerText>
 				<BottomLine initial={{ x: -260 }} animate={{ x: 0, transition: { ease: 'easeIn', duration: 1 } }} />
-			</StyledDiv>
-			<StyledUnderTextDiv>
-				<StyledUnderText
+			</MainTitleDiv>
+			<UnderTextDiv>
+				<UnderText
 					initial={{ y: -200 }}
 					animate={{ y: +valueUnderText, transition: { ease: 'anticipate', duration: 2 } }}
 				>
 					hogar
-				</StyledUnderText>
-			</StyledUnderTextDiv>
-			<motion.div animate={{ opacity: isVisible, transition: { ease: 'easeInOut', duration: 1 } }}>
+				</UnderText>
+			</UnderTextDiv>
+			<InputDiv initial={false} animate={{ opacity: isVisible, transition: { ease: 'easeInOut', duration: 1 } }}>
 				<Input handleChange={handleChange} handleSubmit={handleSubmit} />
-			</motion.div>
-			<div>{userMessage}</div>
+			</InputDiv>
+			<AnimatePresence>
+				{splittedUserMessage.length > 1 && (
+					<UserOutput
+						initial={{ opacity: 0, x: 50 }}
+						animate={{ opacity: 1, x: 0, transition: { ease: 'easeInOut', duration: 1 } }}
+						exit={{ opacity: 0, x: 50 }}
+					>
+						{splittedUserMessage.map((word, index) => [
+							<AnimatedWord
+								key={index}
+								initial={{
+									opacity: 0,
+									y: Math.random() < 0.5 ? -200 : 200
+								}}
+								animate={{ opacity: 1, y: 0, transition: { ease: 'easeOut', duration: 1 } }}
+								exit={{
+									opacity: 0,
+									y: 100
+								}}
+							>
+								{word}
+							</AnimatedWord>
+						])}
+					</UserOutput>
+				)}
+			</AnimatePresence>
 		</FullPageContainer>
 	);
 };
 
+const InputDiv = styled(motion.div)`
+	position: absolute;
+	bottom: 10rem;
+`;
+
+const AnimatedWord = styled(motion.h1)`
+	font-size: 3.6rem;
+	line-height: 1;
+	display: inline-block;
+	margin: 0;
+	margin-right: 1rem;
+`;
+
+const UserOutput = styled(motion.div)`
+	position: absolute;
+	background: var(--lightBlue);
+	padding: 3rem;
+	width: 40rem;
+	height: 40rem;
+	overflow: hidden;
+`;
+
 const BottomLine = styled(motion.div)`
 	border-bottom: 1.5px solid;
 `;
-const StyledDiv = styled(motion.div)`
+const MainTitleDiv = styled(motion.div)`
 	overflow: hidden;
 	height: 19rem;
 	display: flex;
@@ -74,7 +122,7 @@ const StyledDiv = styled(motion.div)`
 
 const StyledTriggerText = styled(motion.h1)`cursor: pointer;`;
 
-const StyledUnderTextDiv = styled(motion.div)`
+const UnderTextDiv = styled(motion.div)`
 	overflow: hidden;
 	height: 7rem;
 	position: relative;
@@ -83,7 +131,7 @@ const StyledUnderTextDiv = styled(motion.div)`
 
 `;
 
-const StyledUnderText = styled(motion.h1)`
+const UnderText = styled(motion.h1)`
 	position: relative;
 	top: -1rem;
 	font-family: 'Lobster Two', cursive;

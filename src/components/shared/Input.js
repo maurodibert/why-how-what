@@ -1,17 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
+import MdHome from 'react-ionicons/lib/MdHome';
 import './../../App.css';
 
 const BasicForm = ({ handleChange, handleSubmit }) => {
 	return (
 		<StyledForm onSubmit={handleSubmit}>
-			<label>
-				<StyledInput type="text" onChange={handleChange} placeholder="Mi hogar es..." />
+			<label style={{ display: 'flex' }}>
+				<StyledInput type="text" onChange={handleChange} placeholder="Un hogar para mí es..." />
+				<StyledSubmit type="submit">
+					<SyledIcon />
+				</StyledSubmit>
 			</label>
 		</StyledForm>
 	);
 };
+
+const StyledSubmit = styled.button`
+	padding: 0 2rem;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	&:focus {
+		outline: none;
+		border: none;
+	}
+`;
+
+const SyledIcon = styled(MdHome)`
+	transition: ease-in-out 0.5s;
+	&:hover {
+		fill: var(--red);
+		transition: ease-in-out 0.5s;
+	}
+`;
 
 const StyledInput = styled.input`
 	font-family: 'Playfair Display', serif;
@@ -29,8 +51,8 @@ const StyledInput = styled.input`
 
 const StyledForm = styled.form`
 	display: flex;
-	align-items: flex-start;
-	flex-direction: column;
+	justify-content: center;
+	flex-direction: row;
 `;
 
 export default BasicForm;
