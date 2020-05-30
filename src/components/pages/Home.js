@@ -4,8 +4,9 @@ import Input from '../shared/Input';
 import styled from 'styled-components';
 import { FullPageContainer } from '../styles/Containers';
 import { motion, AnimatePresence } from 'framer-motion';
+// import HomeForUs from './HomeForUs';
 
-const Home = ({ userMessage, handleChange, handleSubmit }) => {
+const Home = ({ userMessage, handleChange, handleSubmit, isCreased }) => {
 	const [ valueUnderText, setValueUnderText ] = useState(-200);
 	const [ isVisible, setIsVisible ] = useState(0);
 
@@ -57,12 +58,12 @@ const Home = ({ userMessage, handleChange, handleSubmit }) => {
 			<InputDiv initial={false} animate={{ opacity: isVisible, transition: { ease: 'easeInOut', duration: 1 } }}>
 				<Input handleChange={handleChange} handleSubmit={handleSubmit} />
 			</InputDiv>
-			<AnimatePresence>
+			<AnimatedUserOutput>
 				{splittedUserMessage.length > 1 && (
 					<UserOutput
 						initial={{ opacity: 0, x: 50 }}
-						animate={{ opacity: 1, x: 0, transition: { ease: 'easeInOut', duration: 1 } }}
-						exit={{ opacity: 0, x: 50 }}
+						animate={{ opacity: 1, x: isCreased ? -200 : 0, transition: { ease: 'easeIn', duration: 2 } }}
+						exit={{ opacity: 0, x: 0 }}
 					>
 						{splittedUserMessage.map((word, index) => [
 							<AnimatedWord
@@ -82,10 +83,13 @@ const Home = ({ userMessage, handleChange, handleSubmit }) => {
 						])}
 					</UserOutput>
 				)}
-			</AnimatePresence>
+			</AnimatedUserOutput>
+			{/* <HomeForUs isCreased={{ isCreased }} /> */}
 		</FullPageContainer>
 	);
 };
+
+const AnimatedUserOutput = styled(AnimatePresence)``;
 
 const InputDiv = styled(motion.div)`
 	position: absolute;

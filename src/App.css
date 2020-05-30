@@ -1,7 +1,9 @@
-html {
+html,
+body {
 	font-family: 'Playfair Display', serif;
 	font-weight: 200;
 	font-size: 11px;
+	overflow: hidden;
 }
 
 /* fonts */
