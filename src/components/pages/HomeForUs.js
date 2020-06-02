@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FlexRow } from '../styles/Containers';
 import { StyledLi, StyledUl } from '../styles/Lists';
@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { motion } from 'framer-motion';
 
-const HomeForUs = ({ isCreased }) => {
+const HomeForUs = ({ isUserOutputMoved }) => {
 	const list = [
 		{ id: 1, regular: 'Un lugar donde mi familia se sienta protegida.', bold: 'Un espacio seguro' },
 		{ id: 2, regular: 'Un lugar que no te consuma sino provea.', bold: 'Un ambiente sostenible' },
@@ -16,7 +16,7 @@ const HomeForUs = ({ isCreased }) => {
 	];
 
 	return (
-		<StyledDiv animate={{ x: isCreased ? 2000 : 0, transition: { duration: 2 } }}>
+		<StyledDiv initial={{ x: 2000 }} animate={{ x: isUserOutputMoved ? 0 : 2000, transition: { duration: 2 } }}>
 			<div>
 				<h2>Para nosotros un hogar es</h2>
 				<FlexRow>
@@ -40,7 +40,8 @@ const StyledDiv = styled(motion.div)`
 	height: 40rem;
 	position: absolute;
 	background-color: var(--lightBlue);
-	left: 669px;
+	top: 25%;
+	left: 50%;
 	padding: 3rem;
 `;
 

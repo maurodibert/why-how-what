@@ -4,9 +4,8 @@ import Input from '../shared/Input';
 import styled from 'styled-components';
 import { FullPageContainer } from '../styles/Containers';
 import { motion, AnimatePresence } from 'framer-motion';
-// import HomeForUs from './HomeForUs';
 
-const Home = ({ userMessage, handleChange, handleSubmit, isCreased }) => {
+const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) => {
 	const [ valueUnderText, setValueUnderText ] = useState(-200);
 	const [ isVisible, setIsVisible ] = useState(0);
 
@@ -62,7 +61,11 @@ const Home = ({ userMessage, handleChange, handleSubmit, isCreased }) => {
 				{splittedUserMessage.length > 1 && (
 					<UserOutput
 						initial={{ opacity: 0, x: 50 }}
-						animate={{ opacity: 1, x: isCreased ? -200 : 0, transition: { ease: 'easeIn', duration: 2 } }}
+						animate={{
+							opacity: 1,
+							x: isUserOutputMoved ? -200 : 0,
+							transition: { ease: 'easeInOut', duration: 3 }
+						}}
 						exit={{ opacity: 0, x: 0 }}
 					>
 						{splittedUserMessage.map((word, index) => [
@@ -84,7 +87,6 @@ const Home = ({ userMessage, handleChange, handleSubmit, isCreased }) => {
 					</UserOutput>
 				)}
 			</AnimatedUserOutput>
-			{/* <HomeForUs isCreased={{ isCreased }} /> */}
 		</FullPageContainer>
 	);
 };
@@ -106,6 +108,7 @@ const AnimatedWord = styled(motion.h1)`
 
 const UserOutput = styled(motion.div)`
 	position: absolute;
+	top: 25%;
 	background: var(--lightBlue);
 	padding: 3rem;
 	width: 40rem;
