@@ -23,27 +23,46 @@ const HomeForUs = ({ isUserOutputMoved }) => {
 	// 	{ id: 5, regular: 'Un lugar que haga por nosotros.', bold: 'Un organismo inteligente' }
 	// ];
 
-	const variants = {
-		visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 20, restDelta: 2, duration: 2 } },
+	const containerVariants = {
+		visible: {
+			opacity: 1,
+			x: 0,
+			transition: {
+				type: 'spring',
+				stiffness: 20,
+				restDelta: 2,
+				duration: 2,
+				delayChildren: 2,
+				staggerChildren: 4
+			}
+		},
 		notVisible: { opacity: 0, x: '-100%' }
 	};
 
+	const itemVariants = {
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 2
+			}
+		},
+		notVisible: { opacity: 0, y: '20%' }
+	};
+
 	return (
-		<StyledDiv variants={variants} animate={isUserOutputMoved ? 'visible' : 'notVisible'}>
-			{paragraphs.map((p) => {
+		<MotionedDiv variants={containerVariants} animate={isUserOutputMoved ? 'visible' : 'notVisible'}>
+			{paragraphs.map((p, i) => {
 				return (
-					<StyleH3
-						intial={{ y: 100, opacity: 0 }}
-						animate={{ y: 0, opacity: 1, transition: { duration: 4 } }}
-					>
+					<StyleH3 key={i} variants={itemVariants}>
 						{p.body}
 					</StyleH3>
 				);
 			})}
-		</StyledDiv>
+		</MotionedDiv>
 	);
 };
-const StyledDiv = styled(motion.div)`
+const MotionedDiv = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	text-align: right;
