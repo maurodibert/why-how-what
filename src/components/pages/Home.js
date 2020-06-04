@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import { FullPageContainer } from '../styles/Containers';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// text tu paste
+// 'Para mí un hogar es un lugar en donde pueda estar en paz y a la vez desarrollar mi máximo potencial, todo compartido con amigos y familia.'
+
 const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) => {
 	const [ valueUnderText, setValueUnderText ] = useState(-200);
 	const [ isVisible, setIsVisible ] = useState(0);
@@ -30,7 +33,7 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 					initial={{ y: (12 + 50) * 3 }}
 					animate={{
 						y: +valueUnderText === -200 ? -26 : 0,
-						transition: { ease: 'backInOut', duration: 2.4 }
+						transition: { ease: 'backInOut', duration: 2 }
 					}}
 					onHoverStart={(e) => {
 						setValueUnderText(0);
@@ -49,7 +52,7 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 			<UnderTextDiv>
 				<UnderText
 					initial={{ y: -200 }}
-					animate={{ y: +valueUnderText, transition: { ease: 'anticipate', duration: 2 } }}
+					animate={{ y: +valueUnderText, transition: { ease: 'anticipate', duration: 1.5 } }}
 				>
 					hogar
 				</UnderText>
@@ -63,8 +66,8 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 						initial={{ opacity: 0, x: 50 }}
 						animate={{
 							opacity: 1,
-							x: isUserOutputMoved ? -200 : 0,
-							transition: { ease: 'easeInOut', duration: 3 }
+							x: isUserOutputMoved ? '-50%' : 0,
+							transition: { ease: 'easeInOut', duration: 2 }
 						}}
 						exit={{ opacity: 0, x: 0 }}
 					>
