@@ -1,5 +1,6 @@
 html,
 body {
+	color: var(--almostBlack);
 	font-family: 'Playfair Display', serif;
 	font-weight: 200;
 	font-size: 11px;
@@ -53,4 +54,5 @@ li {
 	--green: #8ff9a0;
 	--red: #ec1e1e;
 	--lightBlue: #94ebeb;
+	--almostBlack: #464646;
 }

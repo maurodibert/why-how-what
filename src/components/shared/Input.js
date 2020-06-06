@@ -40,12 +40,10 @@ const StyledInput = styled.input`
 	font-size: 1.4rem;
 	padding: 1rem 2rem;
 	border: none;
-	border-bottom: 1px dashed black;
 
 	&:focus {
 		outline: none;
 		border: none;
-		border-bottom: 1px dashed black;
 	}
 `;
 
@@ -53,6 +51,7 @@ const StyledForm = styled.form`
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
+	border-bottom: 1px black;
 `;
 
 export default BasicForm;

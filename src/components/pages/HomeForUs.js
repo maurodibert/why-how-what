@@ -67,11 +67,11 @@ const MotionedDiv = styled(motion.div)`
 	flex-direction: column;
 	text-align: right;
 	justify-content: flex-end;
-	color: white;
+	color: var(--almostBlack);
 	width: 40rem;
 	height: 40rem;
 	position: absolute;
-	background-color: var(--lightBlue);
+	background-color: white;
 	top: 25%;
 	left: 50%;
 	padding: 3rem;
