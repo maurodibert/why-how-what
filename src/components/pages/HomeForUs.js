@@ -11,18 +11,11 @@ const HomeForUs = ({ isUserOutputMoved }) => {
 		{
 			body: 'Para nosotros un hogar es un lugar donde nuestras familias se sientan protegidas y seguras.'
 		},
-		{ body: 'Es un espacio donde poder descansar, compartir y disfrutar. Un lugar del que no te querés ir.' },
-		{ body: 'Un hogar debería ser un organismo inteligente que no te consuma, que haga por nosotros.' }
+		{ body: 'Es un espacio donde poder descansar, compartir y disfrutar; un lugar del que no te querés ir.' },
+		{ body: 'Un hogar debería ser un organismo inteligente que no te consuma sino que haga por nosotros.' }
 	];
 
-	// const list = [
-	// 	{ id: 1, regular: 'Un lugar donde mi familia se sienta protegida.', bold: 'Un espacio seguro' },
-	// 	{ id: 2, regular: 'Un lugar que no te consuma sino provea.', bold: 'Un ambiente sostenible' },
-	// 	{ id: 3, regular: 'Un lugar donde pueda descansar.', bold: 'Una pausa' },
-	// 	{ id: 4, regular: 'Un lugar del que no te quieras ir.', bold: 'Una zona de placer' },
-	// 	{ id: 5, regular: 'Un lugar que haga por nosotros.', bold: 'Un organismo inteligente' }
-	// ];
-
+	// Animation Variants
 	const containerVariants = {
 		visible: {
 			opacity: 1,
@@ -62,6 +55,7 @@ const HomeForUs = ({ isUserOutputMoved }) => {
 		</MotionedDiv>
 	);
 };
+
 const MotionedDiv = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
@@ -78,6 +72,7 @@ const MotionedDiv = styled(motion.div)`
 `;
 
 const StyleH3 = styled(motion.h3)`
+	font-weight: normal;
 	font-size: 2.6rem;
 	margin-bottom: 2rem;
 	&:last-child{

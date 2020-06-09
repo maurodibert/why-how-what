@@ -1,7 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import MdHome from 'react-ionicons/lib/MdHome';
+import MdArrowForward from 'react-ionicons/lib/MdArrowForward';
 import './../../App.css';
+import { motion } from 'framer-motion';
+
+const arrowVariants = {
+	hidden: {
+		opacity: 0
+	},
+	visible: {
+		opacity: 1,
+		x: 10,
+		transition: { yoyo: Infinity, duration: 0.6 }
+	}
+};
 
 const BasicForm = ({ handleChange, handleSubmit }) => {
 	return (
@@ -9,7 +21,9 @@ const BasicForm = ({ handleChange, handleSubmit }) => {
 			<label style={{ display: 'flex' }}>
 				<StyledInput type="text" onChange={handleChange} placeholder="Un hogar para mí es..." />
 				<StyledSubmit type="submit">
-					<SyledIcon />
+					<AnimatedIcon variants={arrowVariants} animate="visible">
+						<SyledIcon />
+					</AnimatedIcon>
 				</StyledSubmit>
 			</label>
 		</StyledForm>
@@ -27,7 +41,9 @@ const StyledSubmit = styled.button`
 	}
 `;
 
-const SyledIcon = styled(MdHome)`
+const AnimatedIcon = styled(motion.div)``;
+
+const SyledIcon = styled(MdArrowForward)`
 	transition: ease-in-out 0.5s;
 	&:hover {
 		fill: var(--red);
