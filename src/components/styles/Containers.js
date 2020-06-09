@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-const FullPageContainer = styled.div`
+const FullPageContainer = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

@@ -5,36 +5,70 @@ import styled from 'styled-components';
 import { FullPageContainer } from '../styles/Containers';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// text tu paste
-// 'Para mí un hogar es un lugar en donde pueda estar en paz y a la vez desarrollar mi máximo potencial, todo compartido con amigos y familia.'
-
 const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) => {
 	const [ valueUnderText, setValueUnderText ] = useState(-200);
 	const [ isVisible, setIsVisible ] = useState(0);
 
 	const splittedUserMessage = userMessage.split(' ');
 
+	const fullPageVariants = {
+		hidden: {},
+		visible: {}
+	};
+
+	const mainTitleDivVariants = {
+		hidden: {},
+		visible: {
+			transition: {
+				duration: 1,
+				staggerChildren: 0.2
+			}
+		}
+	};
+
+	const titleVariant = {
+		hidden: {
+			y: (12 + 50) * 3
+		},
+		visible: {
+			y: -26,
+			transition: { ease: 'backInOut', duration: 2 }
+		}
+	};
+
+	const styledTriggerTextVariants = {
+		hidden: {
+			y: (12 + 50) * 3
+		},
+		visible: {
+			y: -26,
+			transition: { ease: 'backInOut', duration: 2 }
+		},
+		almostVisible: {
+			y: 0,
+			transition: { type: 'spring', damping: 6, mass: 3, duration: 1.5 }
+		}
+	};
+
+	// const underTextVariants = {
+	// 	hidden: {
+	// 		y: -200
+	// 	},
+	// 	visible: {
+	// 		y: +valueUnderText,
+	// 		transition: { ease: 'anticipate', duration: 1.5 }
+	// 	}
+	// };
+
 	return (
-		<FullPageContainer>
-			<MainTitleDiv>
-				<motion.h1
-					initial={{ y: (12 + 50) * 3 }}
-					animate={{ y: -26, transition: { ease: 'backInOut', duration: 2 } }}
-				>
-					Qué es
-				</motion.h1>
-				<motion.h1
-					initial={{ y: (12 + 50) * 3 }}
-					animate={{ y: -26, transition: { ease: 'backInOut', duration: 2.2 } }}
-				>
-					para vos
-				</motion.h1>
+		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible">
+			<MainTitleDiv variants={mainTitleDivVariants}>
+				<motion.h1 variants={titleVariant}>Qué es</motion.h1>
+				<motion.h1 variants={titleVariant}>para vos</motion.h1>
 				<StyledTriggerText
-					initial={{ y: (12 + 50) * 3 }}
-					animate={{
-						y: +valueUnderText === -200 ? -26 : 0,
-						transition: { ease: 'backInOut', duration: 2 }
-					}}
+					variants={styledTriggerTextVariants}
+					initial="hidden"
+					animate={+valueUnderText === -200 ? 'visible' : 'almostVisible'}
 					onHoverStart={(e) => {
 						setValueUnderText(0);
 					}}
@@ -49,10 +83,13 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 				</StyledTriggerText>
 				<BottomLine initial={{ x: -260 }} animate={{ x: 0, transition: { ease: 'easeIn', duration: 1 } }} />
 			</MainTitleDiv>
-			<UnderTextDiv>
+			<UnderTextDiv variantes={fullPageVariants}>
 				<UnderText
 					initial={{ y: -200 }}
-					animate={{ y: +valueUnderText, transition: { ease: 'anticipate', duration: 1.5 } }}
+					animate={{
+						y: +valueUnderText,
+						transition: { ease: 'anticipate', duration: 1.5 }
+					}}
 				>
 					hogar
 				</UnderText>
@@ -122,6 +159,7 @@ const UserOutput = styled(motion.div)`
 const BottomLine = styled(motion.div)`
 	border-bottom: 1.5px solid;
 `;
+
 const MainTitleDiv = styled(motion.div)`
 	overflow: hidden;
 	height: 19rem;
