@@ -259,8 +259,8 @@ const UserOutput = styled(motion.div)`
 	top: 25%;
 	background: var(--lightBlue);
 	padding: 3rem;
-	width: 40rem;
-	height: 40rem;
+	width: 45rem;
+	height: 45rem;
 	overflow: hidden;
 `;
 
@@ -275,14 +275,20 @@ const AnimatedWord = styled(motion.h1)`
 const FullPageBottomLine = styled(motion.div)`
 	border-bottom: 1.5px solid var(--almostBlack);
 	position: absolute;
-	bottom: 22%;
+	bottom: 21%;
 	display: flex;
 	justify-content: center;
+	@media(max-width: 1400px){
+		bottom: 17%;
+	}
 `;
 
 const AnimatedStyledArrowDown = styled(motion.div)`
 	position: absolute;
 	bottom: 21%;
+	@media(max-width: 1400px){
+		bottom: 17%;
+	}
 `;
 
 const StyledArrowDown = styled(MdArrowDown)`

@@ -62,8 +62,8 @@ const MotionedDiv = styled(motion.div)`
 	text-align: right;
 	justify-content: flex-end;
 	color: var(--almostBlack);
-	width: 40rem;
-	height: 40rem;
+	width: 45rem;
+	height: 45rem;
 	position: absolute;
 	background-color: white;
 	top: 25%;
