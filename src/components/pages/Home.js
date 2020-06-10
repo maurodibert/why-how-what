@@ -208,22 +208,43 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 	);
 };
 
-const AnimatedUserOutput = styled(AnimatePresence)``;
+// Home Styles in order of apparition
+const MainTitleDiv = styled(motion.div)`
+	overflow: hidden;
+	height: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	@media (max-width: 1400px) {
+		height: 30%;
+	}
+`;
+
+const StyledTriggerText = styled(motion.h1)`cursor: pointer;`;
+
+const UnderTextDiv = styled(motion.div)`
+	overflow: hidden;
+	height: 7%;
+	position: relative;
+	left: -3rem;
+	top: 0;
+	@media (max-width: 1400px) {
+	height: 10%;
+	}
+`;
+
+const TitleBottomLine = styled(motion.div)`
+	border-bottom: 1.5px solid;
+`;
 
 const AnimatedH1 = styled(motion.h1)``;
 
 const InputDiv = styled(motion.div)`
 	position: absolute;
-	bottom: 10rem;
+	bottom: 7%;
 `;
 
-const AnimatedWord = styled(motion.h1)`
-	font-size: 3.6rem;
-	line-height: 1;
-	display: inline-block;
-	margin: 0;
-	margin-right: 1rem;
-`;
+const AnimatedUserOutput = styled(AnimatePresence)``;
 
 const UserOutput = styled(motion.div)`
 	position: absolute;
@@ -235,8 +256,12 @@ const UserOutput = styled(motion.div)`
 	overflow: hidden;
 `;
 
-const TitleBottomLine = styled(motion.div)`
-	border-bottom: 1.5px solid;
+const AnimatedWord = styled(motion.h1)`
+	font-size: 3.6rem;
+	line-height: 1;
+	display: inline-block;
+	margin: 0;
+	margin-right: 1rem;
 `;
 
 const FullPageBottomLine = styled(motion.div)`
@@ -256,25 +281,6 @@ const StyledArrowDown = styled(MdArrowDown)`
 	position: absolute;
 	top: 1rem;
 	font-size: 2.6rem;
-`;
-
-const MainTitleDiv = styled(motion.div)`
-	overflow: hidden;
-	height: 19rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-`;
-
-const StyledTriggerText = styled(motion.h1)`cursor: pointer;`;
-
-const UnderTextDiv = styled(motion.div)`
-	overflow: hidden;
-	height: 7rem;
-	position: relative;
-	left: -5rem;
-	top: 0;
-
 `;
 
 const UnderText = styled(motion.h1)`

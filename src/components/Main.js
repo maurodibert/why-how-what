@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Home from './pages/Home';
 import HomeForUs from './pages/HomeForUs';
 
+import { MainPageContainer } from '../components/styles/Containers';
+
 function Main() {
 	const [ userMessage, setUserMessage ] = useState('');
 	const [ isUserOutputMoved, setIsMoved ] = useState(false);
@@ -15,7 +17,7 @@ function Main() {
 	};
 
 	return (
-		<main>
+		<MainPageContainer>
 			<Home
 				handleChange={handleChangeHomeForMe}
 				userMessage={userMessage}
@@ -23,7 +25,7 @@ function Main() {
 				isUserOutputMoved={isUserOutputMoved}
 			/>
 			<HomeForUs isUserOutputMoved={isUserOutputMoved} />
-		</main>
+		</MainPageContainer>
 	);
 }
 

@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+const MainPageContainer = styled.div`
+	display: flex;
+	justify-content: center;
+`;
+
 const FullPageContainer = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
@@ -28,6 +33,6 @@ const FlexColumn = styled.div`
 	flex-direction: column;
 `;
 
-export { FullPageContainer, FullPageContainerFromTop, FlexRow, FlexColumn };
+export { MainPageContainer, FullPageContainer, FullPageContainerFromTop, FlexRow, FlexColumn };
 
 export default FullPageContainer;

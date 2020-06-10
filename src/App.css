@@ -3,7 +3,7 @@ body {
 	color: var(--almostBlack);
 	font-family: 'Playfair Display', serif;
 	font-weight: 200;
-	font-size: 11px;
+	font-size: 10px;
 	overflow: hidden;
 	margin: 0;
 }
@@ -56,4 +56,11 @@ li {
 	--red: #ec1e1e;
 	--lightBlue: #94ebeb;
 	--almostBlack: #464646;
+}
+
+@media (max-width: 1400px) {
+	html,
+	body {
+		font-size: 8px;
+	}
 }
