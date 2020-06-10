@@ -215,23 +215,30 @@ const MainTitleDiv = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
+<<<<<<< HEAD
 	@media (max-width: 1400px) {
 		height: 30%;
 	}
+=======
+>>>>>>> a7a10858af83d612f4312756f486153c53e660c3
 `;
 
 const StyledTriggerText = styled(motion.h1)`cursor: pointer;`;
 
+<<<<<<< HEAD
 const TitleBottomLine = styled(motion.div)`
 	border-bottom: 1.5px solid;
 `;
 
+=======
+>>>>>>> a7a10858af83d612f4312756f486153c53e660c3
 const UnderTextDiv = styled(motion.div)`
 	overflow: hidden;
 	height: 7%;
 	position: relative;
 	left: -3rem;
 	top: 0;
+<<<<<<< HEAD
 	@media (max-width: 1400px) {
 	height: 10%;
 	}
@@ -243,6 +250,12 @@ const UnderText = styled(motion.h1)`
 	font-family: 'Lobster Two', cursive;
 	font-weight: bold;
 	color: var(--red);
+=======
+`;
+
+const TitleBottomLine = styled(motion.div)`
+	border-bottom: 1.5px solid;
+>>>>>>> a7a10858af83d612f4312756f486153c53e660c3
 `;
 
 const AnimatedH1 = styled(motion.h1)``;
@@ -259,8 +272,8 @@ const UserOutput = styled(motion.div)`
 	top: 25%;
 	background: var(--lightBlue);
 	padding: 3rem;
-	width: 40rem;
-	height: 40rem;
+	width: 40%;
+	height: 45%;
 	overflow: hidden;
 `;
 
@@ -291,4 +304,15 @@ const StyledArrowDown = styled(MdArrowDown)`
 	font-size: 2.6rem;
 `;
 
+<<<<<<< HEAD
+=======
+const UnderText = styled(motion.h1)`
+	position: relative;
+	top: -1rem;
+	font-family: 'Lobster Two', cursive;
+	font-weight: bold;
+	color: var(--red);
+`;
+
+>>>>>>> a7a10858af83d612f4312756f486153c53e660c3
 export default Home;
