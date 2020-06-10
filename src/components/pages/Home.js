@@ -222,6 +222,10 @@ const MainTitleDiv = styled(motion.div)`
 
 const StyledTriggerText = styled(motion.h1)`cursor: pointer;`;
 
+const TitleBottomLine = styled(motion.div)`
+	border-bottom: 1.5px solid;
+`;
+
 const UnderTextDiv = styled(motion.div)`
 	overflow: hidden;
 	height: 7%;
@@ -233,8 +237,12 @@ const UnderTextDiv = styled(motion.div)`
 	}
 `;
 
-const TitleBottomLine = styled(motion.div)`
-	border-bottom: 1.5px solid;
+const UnderText = styled(motion.h1)`
+	position: relative;
+	top: -1rem;
+	font-family: 'Lobster Two', cursive;
+	font-weight: bold;
+	color: var(--red);
 `;
 
 const AnimatedH1 = styled(motion.h1)``;
@@ -281,14 +289,6 @@ const StyledArrowDown = styled(MdArrowDown)`
 	position: absolute;
 	top: 1rem;
 	font-size: 2.6rem;
-`;
-
-const UnderText = styled(motion.h1)`
-	position: relative;
-	top: -1rem;
-	font-family: 'Lobster Two', cursive;
-	font-weight: bold;
-	color: var(--red);
 `;
 
 export default Home;
