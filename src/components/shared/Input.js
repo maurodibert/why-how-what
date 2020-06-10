@@ -31,7 +31,6 @@ const BasicForm = ({ handleChange, handleSubmit }) => {
 };
 
 const StyledSubmit = styled.button`
-	padding: 0 2rem;
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
@@ -54,7 +53,7 @@ const SyledIcon = styled(MdArrowForward)`
 const StyledInput = styled.input`
 	font-family: 'Playfair Display', serif;
 	font-size: 1.4rem;
-	padding: 1rem 2rem;
+	padding-bottom: .7rem;
 	border: none;
 
 	&:focus {
