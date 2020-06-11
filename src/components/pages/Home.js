@@ -138,7 +138,7 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 		visible: {
 			width: '92rem',
 			opacity: 1,
-			transition: { ease: 'easeOut', duration: 13 }
+			transition: { duration: 13 }
 		}
 	};
 
@@ -211,13 +211,10 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 // Home Styles in order of apparition
 const MainTitleDiv = styled(motion.div)`
 	overflow: hidden;
-	height: 20%;
+	height: 20rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	@media (max-width: 1400px) {
-		height: 30%;
-	}
 `;
 
 const StyledTriggerText = styled(motion.h1)`cursor: pointer;`;
@@ -228,13 +225,10 @@ const TitleBottomLine = styled(motion.div)`
 
 const UnderTextDiv = styled(motion.div)`
 	overflow: hidden;
-	height: 7%;
+	height: 10rem;
 	position: relative;
 	left: -3rem;
 	top: 0;
-	@media (max-width: 1400px) {
-	height: 10%;
-	}
 `;
 
 const UnderText = styled(motion.h1)`
@@ -249,7 +243,7 @@ const AnimatedH1 = styled(motion.h1)``;
 
 const InputDiv = styled(motion.div)`
 	position: absolute;
-	bottom: 7%;
+	bottom: 7rem;
 `;
 
 const AnimatedUserOutput = styled(AnimatePresence)``;
@@ -262,6 +256,10 @@ const UserOutput = styled(motion.div)`
 	width: 45rem;
 	height: 45rem;
 	overflow: hidden;
+	@media (max-width: 1400px){
+		width: 30rem;
+		heigth: 30rem;
+	}
 `;
 
 const AnimatedWord = styled(motion.h1)`
@@ -274,13 +272,13 @@ const AnimatedWord = styled(motion.h1)`
 
 const FullPageBottomLine = styled(motion.div)`
 	border-bottom: 1.5px solid var(--almostBlack);
-	position: absolute;
-	bottom: 21%;
+	position: relative;
+	transform: translateY(14rem);
 	display: flex;
 	justify-content: center;
-	@media(max-width: 1400px){
-		bottom: 17%;
-	}
+	/* @media(max-width: 1400px){
+			transform: translateY(20rem);
+	} */
 `;
 
 const AnimatedStyledArrowDown = styled(motion.div)`

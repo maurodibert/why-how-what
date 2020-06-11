@@ -69,6 +69,10 @@ const MotionedDiv = styled(motion.div)`
 	top: 25%;
 	left: 50%;
 	padding: 3rem;
+	@media (max-width: 1400px){
+		width: 30rem;
+		heigth: 30rem;
+	}
 `;
 
 const StyleH3 = styled(motion.h3)`

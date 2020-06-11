@@ -61,6 +61,12 @@ li {
 @media (max-width: 1400px) {
 	html,
 	body {
-		font-size: 8px;
+		font-size: 9px;
+	}
+}
+@media (max-height: 950px) {
+	html,
+	body {
+		font-size: 9px;
 	}
 }
