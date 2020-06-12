@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Home from './pages/Home';
-import HomeForUs from './pages/HomeForUs';
 import { Route, Switch } from 'react-router-dom';
 
 import { MainPageContainer } from '../components/styles/Containers';
@@ -29,7 +28,6 @@ function Main() {
 							handleSubmit={handleSubmitHomeForMe}
 							isUserOutputMoved={isUserOutputMoved}
 						/>
-						<HomeForUs isUserOutputMoved={isUserOutputMoved} />
 					</Route>
 				</Switch>
 			</AnimatePresence>

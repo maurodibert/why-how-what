@@ -18,18 +18,12 @@ const HomeForUs = ({ isUserOutputMoved }) => {
 	// Animation Variants
 	const containerVariants = {
 		visible: {
-			opacity: 1,
-			x: 0,
 			transition: {
-				type: 'spring',
-				stiffness: 20,
-				restDelta: 2,
-				duration: 2,
-				delayChildren: 2,
-				staggerChildren: 4
+				delayChildren: 3,
+				staggerChildren: 3
 			}
 		},
-		notVisible: { opacity: 0, x: '-100%' }
+		hidden: {}
 	};
 
 	const itemVariants = {
@@ -40,11 +34,11 @@ const HomeForUs = ({ isUserOutputMoved }) => {
 				duration: 2
 			}
 		},
-		notVisible: { opacity: 0, y: '20%' }
+		hidden: { opacity: 0, y: '20%' }
 	};
 
 	return (
-		<MotionedDiv variants={containerVariants} animate={isUserOutputMoved ? 'visible' : 'notVisible'}>
+		<MotionedDiv variants={containerVariants} initial="hidden" animate={isUserOutputMoved ? 'visible' : 'hidden'}>
 			{paragraphs.map((p, i) => {
 				return (
 					<StyleH3 key={i} variants={itemVariants}>
@@ -62,17 +56,14 @@ const MotionedDiv = styled(motion.div)`
 	text-align: right;
 	justify-content: flex-end;
 	color: var(--almostBlack);
-	width: 45rem;
-	height: 45rem;
-	position: absolute;
-	background-color: white;
-	top: 25%;
-	left: 50%;
+	width: 40rem;
+	height: 40rem;
 	padding: 3rem;
-	@media (max-width: 1400px){
+	background-color: white;
+	/* @media (max-width: 1400px){
 		width: 30rem;
 		heigth: 30rem;
-	}
+	} */
 `;
 
 const StyleH3 = styled(motion.h3)`

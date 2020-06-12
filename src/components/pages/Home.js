@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../shared/Input';
+import HomeForUs from './HomeForUs';
 
 import styled from 'styled-components';
 import { FullPageContainer } from '../styles/Containers';
@@ -101,11 +102,11 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 			}
 		},
 		visibleLeft: {
-			x: '-50%',
+			x: 0,
 			opacity: 1,
 			transition: {
 				ease: 'easeInOut',
-				duration: 2
+				duration: 4
 			}
 		},
 		exit: {
@@ -130,17 +131,32 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 		}
 	};
 
-	const fullPageBottomLineVariants = {
+	const homeForUsVariants = {
 		hidden: {
-			width: 0,
-			opacity: 0
+			opacity: 0,
+			x: -200
 		},
 		visible: {
-			width: '92rem',
 			opacity: 1,
-			transition: { duration: 13 }
+			x: 0,
+			transition: {
+				duration: 4,
+				ease: 'easeInOut'
+			}
 		}
 	};
+
+	// const fullPageBottomLineVariants = {
+	// 	hidden: {
+	// 		width: 0,
+	// 		opacity: 0
+	// 	},
+	// 	visible: {
+	// 		width: '92rem',
+	// 		opacity: 1,
+	// 		transition: { duration: 13 }
+	// 	}
+	// };
 
 	const animatedStyledArrowDownVariants = {
 		hidden: {
@@ -188,20 +204,38 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 				/>
 			</InputDiv>
 			<AnimatedUserOutput>
-				{splittedUserMessage.length > 1 && (
-					<UserOutput variants={userOutputVariants} animate={isUserOutputMoved ? 'visibleLeft' : 'visible'}>
-						{splittedUserMessage.map((word, index) => [
-							<AnimatedWord key={index} variants={animatedWordVariants}>
-								{word}
-							</AnimatedWord>
-						])}
-					</UserOutput>
+				{isInputVisible && (
+					<UserOutputContainer>
+						{splittedUserMessage.length > 1 && (
+							<AnimatedUserOutputGoingLeft>
+								<UserOutput
+									variants={userOutputVariants}
+									animate={isUserOutputMoved ? 'visibleLeft' : 'visible'}
+									exit="hidden"
+									positionTransition
+								>
+									{splittedUserMessage.map((word, index) => [
+										<AnimatedWord key={index} variants={animatedWordVariants}>
+											{word}
+										</AnimatedWord>
+									])}
+								</UserOutput>
+							</AnimatedUserOutputGoingLeft>
+						)}
+						{isUserOutputMoved && (
+							<AnimatedInHomeForUs>
+								<motion.div variants={homeForUsVariants}>
+									<HomeForUs isUserOutputMoved={isUserOutputMoved} />
+								</motion.div>
+							</AnimatedInHomeForUs>
+						)}
+					</UserOutputContainer>
 				)}
 			</AnimatedUserOutput>
-			<FullPageBottomLine
+			{/* <FullPageBottomLine
 				variants={fullPageBottomLineVariants}
 				animate={isInputVisible && isUserOutputMoved ? 'visible' : 'hidden'}
-			/>
+			/> */}
 			<AnimatedStyledArrowDown
 				variants={animatedStyledArrowDownVariants}
 				animate={isUserOutputMoved ? 'visible' : 'hidden'}
@@ -250,20 +284,27 @@ const InputDiv = styled(motion.div)`
 	bottom: 7rem;
 `;
 
-const AnimatedUserOutput = styled(AnimatePresence)``;
+const AnimatedUserOutput = styled(AnimatePresence)`
+`;
+
+const AnimatedUserOutputGoingLeft = styled(AnimatePresence)`
+`;
+
+const UserOutputContainer = styled.div`
+	display: flex;
+	position: absolute;
+	align-items: center;
+	justify-content: center;
+	height: 100rem;
+	width: 100rem;
+`;
 
 const UserOutput = styled(motion.div)`
-	position: absolute;
-	top: 25%;
 	background: var(--lightBlue);
 	padding: 3rem;
-	width: 45rem;
-	height: 45rem;
+	width: 40rem;
+	height: 40rem;
 	overflow: hidden;
-	@media (max-width: 1400px){
-		width: 30rem;
-		heigth: 30rem;
-	}
 `;
 
 const AnimatedWord = styled(motion.h1)`
@@ -274,16 +315,15 @@ const AnimatedWord = styled(motion.h1)`
 	margin-right: 1rem;
 `;
 
-const FullPageBottomLine = styled(motion.div)`
-	border-bottom: 1.5px solid var(--almostBlack);
-	position: absolute;
-	bottom: 10rem;
-	display: flex;
-	justify-content: center;
-	/* @media(max-width: 1400px){
-			transform: translateY(20rem);
-	} */
-`;
+const AnimatedInHomeForUs = styled(AnimatePresence)``;
+
+// const FullPageBottomLine = styled(motion.div)`
+// 	border-bottom: 1.5px solid var(--almostBlack);
+// 	position: relative;
+// 	top: 10rem;
+// 	display: flex;
+// 	justify-content: center;
+// `;
 
 const AnimatedStyledArrowDown = styled(motion.div)`
 	position: absolute;
