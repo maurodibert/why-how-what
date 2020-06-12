@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import MdArrowForward from 'react-ionicons/lib/MdArrowForward';
 import './../../App.css';
@@ -15,11 +15,19 @@ const arrowVariants = {
 	}
 };
 
-const BasicForm = ({ handleChange, handleSubmit }) => {
+const BasicForm = ({ handleChange, handleSubmit, isInputVisible }) => {
+	const refInput = useRef();
+
+	useEffect(() => {
+		if (isInputVisible) {
+			refInput.current.focus();
+		}
+	});
+
 	return (
 		<StyledForm onSubmit={handleSubmit}>
 			<label style={{ display: 'flex' }}>
-				<StyledInput type="text" onChange={handleChange} placeholder="Un hogar para mí es..." />
+				<StyledInput type="text" onChange={handleChange} placeholder="Un hogar para mí es..." ref={refInput} />
 				<StyledSubmit type="submit">
 					<AnimatedIcon variants={arrowVariants} animate="visible">
 						<SyledIcon />

@@ -181,7 +181,11 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 				</UnderText>
 			</UnderTextDiv>
 			<InputDiv variants={inputVariants} animate={isInputVisible && !isUserOutputMoved ? 'visible' : 'hidden'}>
-				<Input handleChange={handleChange} handleSubmit={handleSubmit} />
+				<Input
+					handleChange={handleChange}
+					handleSubmit={handleSubmit}
+					isInputVisible={isInputVisible && !isUserOutputMoved}
+				/>
 			</InputDiv>
 			<AnimatedUserOutput>
 				{splittedUserMessage.length > 1 && (
@@ -272,8 +276,8 @@ const AnimatedWord = styled(motion.h1)`
 
 const FullPageBottomLine = styled(motion.div)`
 	border-bottom: 1.5px solid var(--almostBlack);
-	position: relative;
-	transform: translateY(14rem);
+	position: absolute;
+	bottom: 10rem;
 	display: flex;
 	justify-content: center;
 	/* @media(max-width: 1400px){
@@ -291,6 +295,7 @@ const AnimatedStyledArrowDown = styled(motion.div)`
 
 const StyledArrowDown = styled(MdArrowDown)`
 	position: absolute;
+	bottom: 12rem;
 	top: 1rem;
 	font-size: 2.6rem;
 `;
