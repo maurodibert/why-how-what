@@ -54,6 +54,16 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 		}
 	};
 
+	const highightedTriggerVariants = {
+		original: {
+			color: '#464646'
+		},
+		highlighted: {
+			color: '#dad8d8',
+			transition: { yoyo: Infinity, delay: 3, duration: 3 }
+		}
+	};
+
 	const titleBottomLineVariants = {
 		hidden: {
 			x: -260
@@ -188,7 +198,10 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 						setIsInputVisible(!isInputVisible);
 					}}
 				>
-					tu hogar?
+					{`tu` + ` `}
+					<HighightedTrigger variants={highightedTriggerVariants} initial="original" animate="highlighted">
+						hogar?
+					</HighightedTrigger>
 				</StyledTriggerText>
 				<TitleBottomLine variants={titleBottomLineVariants} />
 			</MainTitleDiv>
@@ -257,6 +270,8 @@ const MainTitleDiv = styled(motion.div)`
 `;
 
 const StyledTriggerText = styled(motion.h1)`cursor: pointer;`;
+
+const HighightedTrigger = styled(motion.span)``;
 
 const TitleBottomLine = styled(motion.div)`
 	border-bottom: 1.5px solid;
