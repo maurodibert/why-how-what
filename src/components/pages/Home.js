@@ -104,6 +104,7 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 		visibleLeft: {
 			x: 0,
 			opacity: 1,
+			backgroundColor: '#efefef',
 			transition: {
 				ease: 'easeInOut',
 				duration: 4
@@ -313,6 +314,12 @@ const AnimatedWord = styled(motion.h1)`
 	display: inline-block;
 	margin: 0;
 	margin-right: 1rem;
+	@media (max-width: 1400px) {
+		font-size: 3rem;
+	}
+	@media (max-height: 950px) {
+		font-size: 3rem;
+	}
 `;
 
 const AnimatedInHomeForUs = styled(AnimatePresence)``;

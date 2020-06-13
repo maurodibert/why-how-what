@@ -17,13 +17,18 @@ const HomeForUs = ({ isUserOutputMoved }) => {
 
 	// Animation Variants
 	const containerVariants = {
+		hidden: {
+			backgroundColor: '#ffffff'
+		},
 		visible: {
+			backgroundColor: `#464646`,
+
 			transition: {
+				duration: 4,
 				delayChildren: 3,
 				staggerChildren: 3
 			}
-		},
-		hidden: {}
+		}
 	};
 
 	const itemVariants = {
@@ -55,7 +60,7 @@ const MotionedDiv = styled(motion.div)`
 	flex-direction: column;
 	text-align: right;
 	justify-content: flex-end;
-	color: var(--almostBlack);
+	color: white;
 	width: 40rem;
 	height: 40rem;
 	padding: 3rem;
