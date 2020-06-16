@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Input from '../shared/Input';
 import HomeForUs from './HomeForUs';
 
 import styled from 'styled-components';
@@ -7,11 +6,15 @@ import { FullPageContainer } from '../styles/Containers';
 import MdArrowDown from 'react-ionicons/lib/MdArrowDown';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) => {
+const Home = ({ isIntroductionMoved, setIsIntroductionMoved }) => {
+	var homeForUsIntroduction = [
+		'hogar, nombre masculino:',
+		'Domicilio habitual de una persona y en el que desarrolla su vida privada o familiar',
+		'Ambiente familiar que se desarrolla en la vivienda habitual'
+	];
+	const [ homeForUsIntroductionVisible, setHomeForUsIntroductionVisible ] = useState(false);
+	const [ isIntroductionHovered, setIsIntroductionHovered ] = useState(false);
 	const [ underTextVisible, setUnderTextVisible ] = useState(false);
-	const [ isInputVisible, setIsInputVisible ] = useState(false);
-
-	const splittedUserMessage = userMessage.split(' ');
 
 	// Animation variants
 	const fullPageVariants = {
@@ -50,17 +53,7 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 		},
 		almostVisible: {
 			y: -6,
-			transition: { type: 'spring', damping: 6, mass: 3, duration: 1.5 }
-		}
-	};
-
-	const highightedTriggerVariants = {
-		original: {
-			color: '#464646'
-		},
-		highlighted: {
-			color: '#dad8d8',
-			transition: { yoyo: Infinity, delay: 3, duration: 3 }
+			transition: { type: 'spring', damping: 6, mass: 3, duration: 0.5 }
 		}
 	};
 
@@ -70,7 +63,7 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 		},
 		visible: {
 			x: 0,
-			transition: { ease: 'easeIn', duration: 1 }
+			transition: { ease: 'easeIn', duration: 1.5 }
 		}
 	};
 
@@ -85,25 +78,30 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 		}
 	};
 
-	const inputVariants = {
-		hidden: {
-			opacity: 0
-		},
-		visible: {
-			opacity: 1,
-			transition: {
-				ease: 'easeInOut',
-				duration: 1
-			}
-		}
-	};
-
-	const userOutputVariants = {
+	const homeIntroductionVariants = {
 		hidden: {
 			opacity: 0,
 			x: 50
 		},
-		visible: {
+		// visible: {
+		// 	x: 0,
+		// 	opacity: 1,
+		// 	transition: {
+		// 		ease: 'easeInOut',
+		// 		duration: 2
+		// 	}
+		// },
+		visibleHovered: {
+			scale: 1.1,
+			x: 0,
+			opacity: 1,
+			transition: {
+				ease: 'easeInOut',
+				duration: 2
+			}
+		},
+		visibleNotHovered: {
+			scale: 1,
 			x: 0,
 			opacity: 1,
 			transition: {
@@ -112,6 +110,7 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 			}
 		},
 		visibleLeft: {
+			scale: 1,
 			x: 0,
 			opacity: 1,
 			backgroundColor: '#efefef',
@@ -126,19 +125,19 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 		}
 	};
 
-	const animatedWordVariants = {
+	const animatedParagraphVariants = {
 		hidden: {
 			opacity: 0,
-			y: Math.random() < 0.5 ? -200 : 200
+			x: '-100vw'
 		},
-		visible: {
+		visibleNotHovered: {
 			opacity: 1,
-			y: 0,
-			transition: { ease: 'easeOut', duration: 1 }
+			x: 0,
+			transition: { type: 'spring', damping: 100, stiffness: 50 }
 		},
 		exit: {
 			opacity: 0,
-			y: 100
+			x: '100vw'
 		}
 	};
 
@@ -157,18 +156,6 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 		}
 	};
 
-	// const fullPageBottomLineVariants = {
-	// 	hidden: {
-	// 		width: 0,
-	// 		opacity: 0
-	// 	},
-	// 	visible: {
-	// 		width: '92rem',
-	// 		opacity: 1,
-	// 		transition: { duration: 13 }
-	// 	}
-	// };
-
 	const animatedStyledArrowDownVariants = {
 		hidden: {
 			opacity: 0
@@ -176,32 +163,31 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 		visible: {
 			opacity: 1,
 			y: 10,
-			transition: { yoyo: Infinity, duration: 0.6, delay: 12 }
+			transition: { yoyo: Infinity, duration: 0.6, delay: 14 }
 		}
 	};
 
 	return (
 		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible">
-			<MainTitleDiv variants={mainTitleDivVariants}>
+			<MainTitleDiv
+				variants={mainTitleDivVariants}
+				onHoverStart={(e) => {
+					setUnderTextVisible(true);
+				}}
+				onHoverEnd={(e) => {
+					setUnderTextVisible(false);
+				}}
+				onClick={(e) => {
+					setHomeForUsIntroductionVisible(true);
+				}}
+			>
 				<AnimatedH1 variants={titleVariant}>Qué es</AnimatedH1>
 				<AnimatedH1 variants={titleVariant}>para vos</AnimatedH1>
 				<StyledTriggerText
 					variants={styledTriggerTextVariants}
 					animate={underTextVisible ? 'almostVisible' : 'visible'}
-					onHoverStart={(e) => {
-						setUnderTextVisible(true);
-					}}
-					onHoverEnd={(e) => {
-						setUnderTextVisible(false);
-					}}
-					onClick={(e) => {
-						setIsInputVisible(!isInputVisible);
-					}}
 				>
-					{`tu` + ` `}
-					<HighightedTrigger variants={highightedTriggerVariants} initial="original" animate="highlighted">
-						hogar?
-					</HighightedTrigger>
+					tu hogar?
 				</StyledTriggerText>
 				<TitleBottomLine variants={titleBottomLineVariants} />
 			</MainTitleDiv>
@@ -210,49 +196,56 @@ const Home = ({ userMessage, handleChange, handleSubmit, isUserOutputMoved }) =>
 					hogar
 				</UnderText>
 			</UnderTextDiv>
-			<InputDiv variants={inputVariants} animate={isInputVisible && !isUserOutputMoved ? 'visible' : 'hidden'}>
-				<Input
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					isInputVisible={isInputVisible && !isUserOutputMoved}
-				/>
-			</InputDiv>
-			<AnimatedUserOutput>
-				{isInputVisible && (
-					<UserOutputContainer>
-						{splittedUserMessage.length > 1 && (
-							<AnimatedUserOutputGoingLeft>
-								<UserOutput
-									variants={userOutputVariants}
-									animate={isUserOutputMoved ? 'visibleLeft' : 'visible'}
+
+			<AnimatedHomeForUsIntroduction>
+				{homeForUsIntroductionVisible && (
+					<IntroductionContainer>
+						{homeForUsIntroduction.length > 0 && (
+							<AnimatedIntroductionGoingLeft>
+								<Introduction
+									variants={homeIntroductionVariants}
+									animate={
+										isIntroductionMoved ? (
+											'visibleLeft'
+										) : isIntroductionHovered ? (
+											'visibleHovered'
+										) : (
+											'visibleNotHovered'
+										)
+									}
 									exit="hidden"
 									positionTransition
+									onHoverStart={(e) => {
+										setIsIntroductionHovered(true);
+									}}
+									onHoverEnd={(e) => {
+										setIsIntroductionHovered(false);
+									}}
+									onClick={(e) => {
+										setIsIntroductionMoved(true);
+									}}
 								>
-									{splittedUserMessage.map((word, index) => [
-										<AnimatedWord key={index} variants={animatedWordVariants}>
-											{word}
-										</AnimatedWord>
+									{homeForUsIntroduction.map((paragraph, index) => [
+										<AnimatedParagraph key={index} variants={animatedParagraphVariants}>
+											{paragraph}
+										</AnimatedParagraph>
 									])}
-								</UserOutput>
-							</AnimatedUserOutputGoingLeft>
+								</Introduction>
+							</AnimatedIntroductionGoingLeft>
 						)}
-						{isUserOutputMoved && (
+						{isIntroductionMoved && (
 							<AnimatedInHomeForUs>
 								<motion.div variants={homeForUsVariants}>
-									<HomeForUs isUserOutputMoved={isUserOutputMoved} />
+									<HomeForUs isUserOutputMoved={isIntroductionMoved} />
 								</motion.div>
 							</AnimatedInHomeForUs>
 						)}
-					</UserOutputContainer>
+					</IntroductionContainer>
 				)}
-			</AnimatedUserOutput>
-			{/* <FullPageBottomLine
-				variants={fullPageBottomLineVariants}
-				animate={isInputVisible && isUserOutputMoved ? 'visible' : 'hidden'}
-			/> */}
+			</AnimatedHomeForUsIntroduction>
 			<AnimatedStyledArrowDown
 				variants={animatedStyledArrowDownVariants}
-				animate={isUserOutputMoved ? 'visible' : 'hidden'}
+				animate={isIntroductionMoved ? 'visible' : 'hidden'}
 			>
 				<StyledArrowDown />
 			</AnimatedStyledArrowDown>
@@ -267,11 +260,12 @@ const MainTitleDiv = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
+	&:hover{
+		cursor: pointer;
+	}
 `;
 
 const StyledTriggerText = styled(motion.h1)`cursor: pointer;`;
-
-const HighightedTrigger = styled(motion.span)``;
 
 const TitleBottomLine = styled(motion.div)`
 	border-bottom: 1.5px solid;
@@ -295,18 +289,13 @@ const UnderText = styled(motion.h1)`
 
 const AnimatedH1 = styled(motion.h1)``;
 
-const InputDiv = styled(motion.div)`
-	position: absolute;
-	bottom: 7rem;
+const AnimatedHomeForUsIntroduction = styled(AnimatePresence)`
 `;
 
-const AnimatedUserOutput = styled(AnimatePresence)`
+const AnimatedIntroductionGoingLeft = styled(AnimatePresence)`
 `;
 
-const AnimatedUserOutputGoingLeft = styled(AnimatePresence)`
-`;
-
-const UserOutputContainer = styled.div`
+const IntroductionContainer = styled.div`
 	display: flex;
 	position: absolute;
 	align-items: center;
@@ -315,25 +304,31 @@ const UserOutputContainer = styled.div`
 	width: 100rem;
 `;
 
-const UserOutput = styled(motion.div)`
+const Introduction = styled(motion.div)`
 	background: var(--lightBlue);
 	padding: 3rem;
 	width: 40rem;
 	height: 40rem;
 	overflow: hidden;
+	&:hover{
+		cursor: pointer;
+	}
 `;
 
-const AnimatedWord = styled(motion.h1)`
-	font-size: 3.6rem;
+const AnimatedParagraph = styled(motion.p)`
+	font-size: 3rem;
 	line-height: 1;
-	display: inline-block;
 	margin: 0;
-	margin-right: 1rem;
+	margin-top: 2rem;
+	&:first-child{
+		font-weight: bold;
+		font-size: 3.6rem;
+	}
 	@media (max-width: 1400px) {
-		font-size: 3rem;
+		font-size: 2.6rem;
 	}
 	@media (max-height: 950px) {
-		font-size: 3rem;
+		font-size: 2.6rem;
 	}
 `;
 

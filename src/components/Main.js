@@ -6,16 +6,12 @@ import { MainPageContainer } from '../components/styles/Containers';
 import { AnimatePresence } from 'framer-motion';
 
 function Main() {
-	const [ userMessage, setUserMessage ] = useState('');
-	const [ isUserOutputMoved, setIsMoved ] = useState(false);
+	const [ isIntroductionMoved, setIsIntroductionMoved ] = useState(false);
 
-	const handleChangeHomeForMe = (e) => {
-		setUserMessage(e.target.value);
-	};
-	const handleSubmitHomeForMe = (e) => {
-		e.preventDefault();
-		setIsMoved(true);
-	};
+	// const handleChangeHomeForMe = (e) => {};
+	// const handleSubmitHomeForMe = (e) => {
+	// 	e.preventDefault();
+	// };
 
 	return (
 		<MainPageContainer>
@@ -23,10 +19,8 @@ function Main() {
 				<Switch>
 					<Route path="/">
 						<Home
-							handleChange={handleChangeHomeForMe}
-							userMessage={userMessage}
-							handleSubmit={handleSubmitHomeForMe}
-							isUserOutputMoved={isUserOutputMoved}
+							isIntroductionMoved={isIntroductionMoved}
+							setIsIntroductionMoved={setIsIntroductionMoved}
 						/>
 					</Route>
 				</Switch>

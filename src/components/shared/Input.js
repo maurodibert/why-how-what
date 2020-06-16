@@ -78,3 +78,28 @@ const StyledForm = styled.form`
 `;
 
 export default BasicForm;
+
+// implementation example
+
+// 	const [ isInputVisible, setIsInputVisible ] = useState(false);
+
+/* <InputDiv variants={inputVariants} animate={isInputVisible && !isUserOutputMoved ? 'visible' : 'hidden'}>
+	<Input
+		handleChange={handleChange}
+		handleSubmit={handleSubmit}
+		isInputVisible={isInputVisible && !isUserOutputMoved}
+	/>
+</InputDiv> */
+
+// const inputVariants = {
+// 	hidden: {
+// 		opacity: 0
+// 	},
+// 	visible: {
+// 		opacity: 1,
+// 		transition: {
+// 			ease: 'easeInOut',
+// 			duration: 1
+// 		}
+// 	}
+// };
