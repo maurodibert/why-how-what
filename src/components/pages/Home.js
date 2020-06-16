@@ -83,14 +83,6 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved }) => {
 			opacity: 0,
 			x: 50
 		},
-		// visible: {
-		// 	x: 0,
-		// 	opacity: 1,
-		// 	transition: {
-		// 		ease: 'easeInOut',
-		// 		duration: 2
-		// 	}
-		// },
 		visibleHovered: {
 			scale: 1.1,
 			x: 0,
@@ -128,12 +120,20 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved }) => {
 	const animatedParagraphVariants = {
 		hidden: {
 			opacity: 0,
-			x: '-100vw'
+			x: '-100vw',
+			scale: 9,
+			rotate: 180
 		},
 		visibleNotHovered: {
 			opacity: 1,
 			x: 0,
-			transition: { type: 'spring', damping: 100, stiffness: 50 }
+			scale: 1,
+			rotate: 0,
+			transition: {
+				x: { type: 'spring', damping: 100, stiffness: 50 },
+				scale: { duration: 2 },
+				rotate: { duration: 2 }
+			}
 		},
 		exit: {
 			opacity: 0,
@@ -319,7 +319,7 @@ const AnimatedParagraph = styled(motion.p)`
 	font-size: 3rem;
 	line-height: 1;
 	margin: 0;
-	margin-top: 2rem;
+	margin-top: 3rem;
 	&:first-child{
 		font-weight: bold;
 		font-size: 3.6rem;
