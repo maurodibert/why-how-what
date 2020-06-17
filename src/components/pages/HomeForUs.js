@@ -73,7 +73,7 @@ const MotionedDiv = styled(motion.div)`
 
 const StyleH3 = styled(motion.h3)`
 	font-weight: normal;
-	font-size: 2.6rem;
+	font-size: 2.2rem;
 	margin-bottom: 2rem;
 	&:last-child{
 		margin: 0;

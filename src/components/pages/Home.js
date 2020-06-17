@@ -203,6 +203,7 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved }) => {
 						{homeForUsIntroduction.length > 0 && (
 							<AnimatedIntroductionGoingLeft>
 								<Introduction
+									isIntroductionMoved={isIntroductionMoved}
 									variants={homeIntroductionVariants}
 									animate={
 										isIntroductionMoved ? (
@@ -216,13 +217,16 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved }) => {
 									exit="hidden"
 									positionTransition
 									onHoverStart={(e) => {
-										setIsIntroductionHovered(true);
+										isIntroductionMoved
+											? setIsIntroductionHovered(false)
+											: setIsIntroductionHovered(true);
 									}}
 									onHoverEnd={(e) => {
 										setIsIntroductionHovered(false);
 									}}
 									onClick={(e) => {
 										setIsIntroductionMoved(true);
+										setIsIntroductionHovered(false);
 									}}
 								>
 									{homeForUsIntroduction.map((paragraph, index) => [
@@ -310,13 +314,14 @@ const Introduction = styled(motion.div)`
 	width: 40rem;
 	height: 40rem;
 	overflow: hidden;
+	cursor: default;
 	&:hover{
-		cursor: pointer;
+		cursor: ${(props) => (props.isIntroductionMoved ? 'initial' : 'pointer')};
 	}
 `;
 
 const AnimatedParagraph = styled(motion.p)`
-	font-size: 3rem;
+	font-size: 2.2rem;
 	line-height: 1;
 	margin: 0;
 	margin-top: 3rem;
@@ -325,10 +330,10 @@ const AnimatedParagraph = styled(motion.p)`
 		font-size: 3.6rem;
 	}
 	@media (max-width: 1400px) {
-		font-size: 2.6rem;
+		font-size: 2.2rem;
 	}
 	@media (max-height: 950px) {
-		font-size: 2.6rem;
+		font-size: 2.2rem;
 	}
 `;
 
@@ -345,6 +350,8 @@ const AnimatedInHomeForUs = styled(AnimatePresence)``;
 const AnimatedStyledArrowDown = styled(motion.div)`
 	position: absolute;
 	bottom: 21%;
+	display: flex;
+	justify-content: center;
 	@media(max-width: 1400px){
 		bottom: 17%;
 	}
