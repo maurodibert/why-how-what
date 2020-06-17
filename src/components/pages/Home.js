@@ -6,7 +6,7 @@ import { FullPageContainer } from '../styles/Containers';
 import MdArrowDown from 'react-ionicons/lib/MdArrowDown';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Home = ({ isIntroductionMoved, setIsIntroductionMoved }) => {
+const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, setIsHowWeDoVisible }) => {
 	var homeForUsIntroduction = [
 		'hogar, nombre masculino:',
 		'Domicilio habitual de una persona y en el que desarrolla su vida privada o familiar',
@@ -20,7 +20,10 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved }) => {
 	const fullPageVariants = {
 		hidden: {},
 		visible: {},
-		exit: {}
+		exit: {
+			y: '-100vh',
+			transition: { ease: 'easeIn', duration: 2 }
+		}
 	};
 
 	const mainTitleDivVariants = {
@@ -164,96 +167,116 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved }) => {
 			opacity: 1,
 			y: 10,
 			transition: { yoyo: Infinity, duration: 0.6, delay: 14 }
+		},
+		exit: {
+			y: '200vh',
+			transition: { duration: 4 }
 		}
 	};
 
 	return (
-		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible">
-			<MainTitleDiv
-				variants={mainTitleDivVariants}
-				onHoverStart={(e) => {
-					setUnderTextVisible(true);
-				}}
-				onHoverEnd={(e) => {
-					setUnderTextVisible(false);
-				}}
-				onClick={(e) => {
-					setHomeForUsIntroductionVisible(true);
-				}}
-			>
-				<AnimatedH1 variants={titleVariant}>Qué es</AnimatedH1>
-				<AnimatedH1 variants={titleVariant}>para vos</AnimatedH1>
-				<StyledTriggerText
-					variants={styledTriggerTextVariants}
-					animate={underTextVisible ? 'almostVisible' : 'visible'}
+		<AnimatePresence>
+			{!isHowWeDoVisible && (
+				<FullPageContainer
+					variants={fullPageVariants}
+					initial="hidden"
+					animate="visible"
+					exit="exit"
+					positionTransition
 				>
-					tu hogar?
-				</StyledTriggerText>
-				<TitleBottomLine variants={titleBottomLineVariants} />
-			</MainTitleDiv>
-			<UnderTextDiv>
-				<UnderText variants={underTextVariants} animate={underTextVisible ? 'visible' : 'hidden'}>
-					hogar
-				</UnderText>
-			</UnderTextDiv>
+					<MainTitleDiv
+						variants={mainTitleDivVariants}
+						onHoverStart={(e) => {
+							setUnderTextVisible(true);
+						}}
+						onHoverEnd={(e) => {
+							setUnderTextVisible(false);
+						}}
+						onClick={(e) => {
+							setHomeForUsIntroductionVisible(true);
+						}}
+					>
+						<AnimatedH1 variants={titleVariant}>Qué es</AnimatedH1>
+						<AnimatedH1 variants={titleVariant}>para vos</AnimatedH1>
+						<StyledTriggerText
+							variants={styledTriggerTextVariants}
+							animate={underTextVisible ? 'almostVisible' : 'visible'}
+						>
+							tu hogar?
+						</StyledTriggerText>
+						<TitleBottomLine variants={titleBottomLineVariants} />
+					</MainTitleDiv>
+					<UnderTextDiv>
+						<UnderText variants={underTextVariants} animate={underTextVisible ? 'visible' : 'hidden'}>
+							hogar
+						</UnderText>
+					</UnderTextDiv>
 
-			<AnimatedHomeForUsIntroduction>
-				{homeForUsIntroductionVisible && (
-					<IntroductionContainer>
-						{homeForUsIntroduction.length > 0 && (
-							<AnimatedIntroductionGoingLeft>
-								<Introduction
-									isIntroductionMoved={isIntroductionMoved}
-									variants={homeIntroductionVariants}
-									animate={
-										isIntroductionMoved ? (
-											'visibleLeft'
-										) : isIntroductionHovered ? (
-											'visibleHovered'
-										) : (
-											'visibleNotHovered'
-										)
-									}
-									exit="hidden"
-									positionTransition
-									onHoverStart={(e) => {
-										isIntroductionMoved
-											? setIsIntroductionHovered(false)
-											: setIsIntroductionHovered(true);
-									}}
-									onHoverEnd={(e) => {
-										setIsIntroductionHovered(false);
-									}}
-									onClick={(e) => {
-										setIsIntroductionMoved(true);
-										setIsIntroductionHovered(false);
-									}}
-								>
-									{homeForUsIntroduction.map((paragraph, index) => [
-										<AnimatedParagraph key={index} variants={animatedParagraphVariants}>
-											{paragraph}
-										</AnimatedParagraph>
-									])}
-								</Introduction>
-							</AnimatedIntroductionGoingLeft>
+					<AnimatedHomeForUsIntroduction>
+						{homeForUsIntroductionVisible && (
+							<IntroductionContainer>
+								{homeForUsIntroduction.length > 0 && (
+									<AnimatedIntroductionGoingLeft>
+										<Introduction
+											isIntroductionMoved={isIntroductionMoved}
+											variants={homeIntroductionVariants}
+											animate={
+												isIntroductionMoved ? (
+													'visibleLeft'
+												) : isIntroductionHovered ? (
+													'visibleHovered'
+												) : (
+													'visibleNotHovered'
+												)
+											}
+											exit="hidden"
+											positionTransition
+											onHoverStart={(e) => {
+												isIntroductionMoved
+													? setIsIntroductionHovered(false)
+													: setIsIntroductionHovered(true);
+											}}
+											onHoverEnd={(e) => {
+												setIsIntroductionHovered(false);
+											}}
+											onClick={(e) => {
+												setIsIntroductionMoved(true);
+												setIsIntroductionHovered(false);
+											}}
+										>
+											{homeForUsIntroduction.map((paragraph, index) => [
+												<AnimatedParagraph key={index} variants={animatedParagraphVariants}>
+													{paragraph}
+												</AnimatedParagraph>
+											])}
+										</Introduction>
+									</AnimatedIntroductionGoingLeft>
+								)}
+								{isIntroductionMoved && (
+									<AnimatedInHomeForUs>
+										<motion.div variants={homeForUsVariants}>
+											<HomeForUs isUserOutputMoved={isIntroductionMoved} />
+										</motion.div>
+									</AnimatedInHomeForUs>
+								)}
+							</IntroductionContainer>
 						)}
-						{isIntroductionMoved && (
-							<AnimatedInHomeForUs>
-								<motion.div variants={homeForUsVariants}>
-									<HomeForUs isUserOutputMoved={isIntroductionMoved} />
-								</motion.div>
-							</AnimatedInHomeForUs>
-						)}
-					</IntroductionContainer>
-				)}
-			</AnimatedHomeForUsIntroduction>
-			<AnimatedStyledArrowDown
-				variants={animatedStyledArrowDownVariants}
-				animate={isIntroductionMoved ? 'visible' : 'hidden'}
-			>
-				<StyledArrowDown />
-			</AnimatedStyledArrowDown>
-		</FullPageContainer>
+					</AnimatedHomeForUsIntroduction>
+					{!isHowWeDoVisible && (
+						<AnimatedStyledArrowDown
+							variants={animatedStyledArrowDownVariants}
+							animate={isIntroductionMoved ? 'visible' : 'hidden'}
+							exit="exit"
+							onClick={() => {
+								setIsHowWeDoVisible(true);
+							}}
+						>
+							<StyledArrowDown />
+						</AnimatedStyledArrowDown>
+					)}
+				</FullPageContainer>
+			)}
+		</AnimatePresence>
 	);
 };
 
@@ -339,19 +362,14 @@ const AnimatedParagraph = styled(motion.p)`
 
 const AnimatedInHomeForUs = styled(AnimatePresence)``;
 
-// const FullPageBottomLine = styled(motion.div)`
-// 	border-bottom: 1.5px solid var(--almostBlack);
-// 	position: relative;
-// 	top: 10rem;
-// 	display: flex;
-// 	justify-content: center;
-// `;
-
 const AnimatedStyledArrowDown = styled(motion.div)`
 	position: absolute;
 	bottom: 21%;
 	display: flex;
 	justify-content: center;
+	&:hover {
+		cursor: pointer;
+	}
 	@media(max-width: 1400px){
 		bottom: 17%;
 	}

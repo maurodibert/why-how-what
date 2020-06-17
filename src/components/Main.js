@@ -7,11 +7,7 @@ import { AnimatePresence } from 'framer-motion';
 
 function Main() {
 	const [ isIntroductionMoved, setIsIntroductionMoved ] = useState(false);
-
-	// const handleChangeHomeForMe = (e) => {};
-	// const handleSubmitHomeForMe = (e) => {
-	// 	e.preventDefault();
-	// };
+	const [ isHowWeDoVisible, setIsHowWeDoVisible ] = useState(false);
 
 	return (
 		<MainPageContainer>
@@ -21,6 +17,8 @@ function Main() {
 						<Home
 							isIntroductionMoved={isIntroductionMoved}
 							setIsIntroductionMoved={setIsIntroductionMoved}
+							isHowWeDoVisible={isHowWeDoVisible}
+							setIsHowWeDoVisible={setIsHowWeDoVisible}
 						/>
 					</Route>
 				</Switch>
@@ -30,3 +28,11 @@ function Main() {
 }
 
 export default Main;
+
+// const FullPageBottomLine = styled(motion.div)`
+// 	border-bottom: 1.5px solid var(--almostBlack);
+// 	position: relative;
+// 	top: 10rem;
+// 	display: flex;
+// 	justify-content: center;
+// `;
