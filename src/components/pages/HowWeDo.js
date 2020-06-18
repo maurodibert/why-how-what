@@ -1,21 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { FullPageContainer, FlexRow, FlexColumn } from '../styles/Containers';
-import StyledButton from '../styles/Buttons';
+import { FullPageContainer } from '../styles/Containers';
+import { motion } from 'framer-motion';
 
 const HowWeDo = () => {
 	return (
 		<FullPageContainer>
-			<FlexColumn>
-				<StyledH2>Cómo logramos esto?</StyledH2>
-				<FlexRow>
-					<ExactaFundamental />
-				</FlexRow>
-				<Link to="/why-we-do">
-					<StyledButton>Continuar</StyledButton>
-				</Link>
-			</FlexColumn>
+			<StyledH2 animate={{ transition: { duration: 8 } }}>Cómo logramos esto?</StyledH2>
 		</FullPageContainer>
 	);
 };
@@ -41,26 +33,8 @@ const ExactaFundamental = () => {
 				'Mediante la utilización de metodologías ágiles y tecnología aplicada a la gestión y comunicación, consolidamos grupos de trabajo eficaces, confiables y que disfrutan de crear.'
 		}
 	];
-
-	return fundamentalsList.map((fundamental, index) => {
-		return (
-			<StyledFlexColumn key={index}>
-				<div>
-					<Link to={fundamental.url}>
-						<h3>{fundamental.title}</h3>
-					</Link>
-					<StyledP>{fundamental.paragraph}</StyledP>
-				</div>
-			</StyledFlexColumn>
-		);
-	});
 };
 
-const StyledP = styled.p`margin: 1rem 1rem 2rem 0;`;
-const StyledH2 = styled.h2`margin-bottom: 2rem;`;
-const StyledFlexColumn = styled(FlexColumn)`
-	justify-content: space-between;
-	width: 20rem;
-	margin: 0 1rem 0 0;
-`;
+const StyledH2 = styled(motion.h2)`margin-bottom: 2rem;`;
+
 export default HowWeDo;

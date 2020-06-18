@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import Home from './pages/Home';
-import { Route, Switch } from 'react-router-dom';
+import HowWeDo from './pages/HowWeDo';
+import { Route, Switch, useLocation } from 'react-router-dom';
 
 import { MainPageContainer } from '../components/styles/Containers';
 import { AnimatePresence } from 'framer-motion';
 
 function Main() {
+	const location = useLocation();
 	const [ isIntroductionMoved, setIsIntroductionMoved ] = useState(false);
 	const [ isHowWeDoVisible, setIsHowWeDoVisible ] = useState(false);
 
 	return (
 		<MainPageContainer>
-			<AnimatePresence>
-				<Switch>
+			<AnimatePresence exitBeforeEnter>
+				<Switch location={location} key={location.key}>
+					<Route path="/how-we-do">
+						<HowWeDo />
+					</Route>
 					<Route path="/">
 						<Home
 							isIntroductionMoved={isIntroductionMoved}
