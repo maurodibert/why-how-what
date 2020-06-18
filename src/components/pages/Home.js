@@ -10,8 +10,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, setIsHowWeDoVisible }) => {
 	var homeForUsIntroduction = [
 		'hogar, nombre masculino:',
-		'Domicilio habitual de una persona y en el que desarrolla su vida privada o familiar',
-		'Ambiente familiar que se desarrolla en la vivienda habitual'
+		'Domicilio habitual de una persona y en el que desarrolla su vida privada o familiar.',
+		'Ambiente familiar que se desarrolla en la vivienda habitual.'
 	];
 	const [ homeForUsIntroductionVisible, setHomeForUsIntroductionVisible ] = useState(false);
 	const [ isIntroductionHovered, setIsIntroductionHovered ] = useState(false);
@@ -47,7 +47,7 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 		}
 	};
 
-	const styledTriggerTextVariants = {
+	const TriggerTextVariants = {
 		hidden: {
 			y: (12 + 50) * 3
 		},
@@ -82,7 +82,7 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 		}
 	};
 
-	const homeIntroductionVariants = {
+	const introductionVariants = {
 		hidden: {
 			opacity: 0,
 			x: 50
@@ -167,7 +167,7 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 		},
 		exit: {
 			y: '200vh',
-			transition: { duration: 4 }
+			transition: { duration: 2 }
 		}
 	};
 
@@ -191,14 +191,11 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 					setHomeForUsIntroductionVisible(true);
 				}}
 			>
-				<AnimatedH1 variants={titleVariant}>Qué es</AnimatedH1>
-				<AnimatedH1 variants={titleVariant}>para vos</AnimatedH1>
-				<StyledTriggerText
-					variants={styledTriggerTextVariants}
-					animate={underTextVisible ? 'almostVisible' : 'visible'}
-				>
+				<Title variants={titleVariant}>Qué es</Title>
+				<Title variants={titleVariant}>para vos</Title>
+				<TriggerText variants={TriggerTextVariants} animate={underTextVisible ? 'almostVisible' : 'visible'}>
 					tu hogar?
-				</StyledTriggerText>
+				</TriggerText>
 				<TitleBottomLine variants={titleBottomLineVariants} />
 			</MainTitleDiv>
 			<UnderTextDiv>
@@ -210,10 +207,10 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 			{homeForUsIntroductionVisible && (
 				<IntroductionContainer>
 					{homeForUsIntroduction.length > 0 && (
-						<AnimatedIntroductionGoingLeft>
+						<IntroductionGoingLeft>
 							<Introduction
 								isIntroductionMoved={isIntroductionMoved}
-								variants={homeIntroductionVariants}
+								variants={introductionVariants}
 								animate={
 									isIntroductionMoved ? (
 										'visibleLeft'
@@ -239,22 +236,22 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 								}}
 							>
 								{homeForUsIntroduction.map((paragraph, index) => [
-									<AnimatedParagraph key={index} variants={animatedParagraphVariants}>
+									<AnimatedP key={index} variants={animatedParagraphVariants}>
 										{paragraph}
-									</AnimatedParagraph>
+									</AnimatedP>
 								])}
 							</Introduction>
-						</AnimatedIntroductionGoingLeft>
+						</IntroductionGoingLeft>
 					)}
 					{isIntroductionMoved && (
-						<motion.div variants={homeForUsVariants}>
+						<HomeForUsContainer variants={homeForUsVariants}>
 							<HomeForUs isUserOutputMoved={isIntroductionMoved} />
-						</motion.div>
+						</HomeForUsContainer>
 					)}
 				</IntroductionContainer>
 			)}
 			{!isHowWeDoVisible && (
-				<AnimatedStyledArrowDown
+				<ArrowDownContainer
 					variants={animatedStyledArrowDownVariants}
 					animate={isIntroductionMoved ? 'visible' : 'hidden'}
 					exit="exit"
@@ -262,10 +259,10 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 						setIsHowWeDoVisible(true);
 					}}
 				>
-					<StyledLink to="/how-we-do">
-						<StyledArrowDown />
-					</StyledLink>
-				</AnimatedStyledArrowDown>
+					<ArrowLink to="/how-we-do">
+						<ArrowDown />
+					</ArrowLink>
+				</ArrowDownContainer>
 			)}
 		</FullPageContainer>
 	);
@@ -283,7 +280,9 @@ const MainTitleDiv = styled(motion.div)`
 	}
 `;
 
-const StyledTriggerText = styled(motion.h1)`cursor: pointer;`;
+const Title = styled(motion.h1)``;
+
+const TriggerText = styled(motion.h1)`cursor: pointer;`;
 
 const TitleBottomLine = styled(motion.div)`
 	border-bottom: 1.5px solid;
@@ -305,9 +304,7 @@ const UnderText = styled(motion.h1)`
 	color: var(--red);
 `;
 
-const AnimatedH1 = styled(motion.h1)``;
-
-const AnimatedIntroductionGoingLeft = styled(AnimatePresence)`
+const IntroductionGoingLeft = styled(AnimatePresence)`
 `;
 
 const IntroductionContainer = styled.div`
@@ -331,7 +328,7 @@ const Introduction = styled(motion.div)`
 	}
 `;
 
-const AnimatedParagraph = styled(motion.p)`
+const AnimatedP = styled(motion.p)`
 	font-size: 2.2rem;
 	line-height: 1;
 	margin: 0;
@@ -348,7 +345,9 @@ const AnimatedParagraph = styled(motion.p)`
 	}
 `;
 
-const AnimatedStyledArrowDown = styled(motion.div)`
+const HomeForUsContainer = styled(motion.div)``;
+
+const ArrowDownContainer = styled(motion.div)`
 	position: absolute;
 	bottom: 21%;
 	display: flex;
@@ -361,14 +360,14 @@ const AnimatedStyledArrowDown = styled(motion.div)`
 	}
 `;
 
-const StyledArrowDown = styled(MdArrowDown)`
+const ArrowDown = styled(MdArrowDown)`
 	position: absolute;
 	bottom: 12rem;
 	top: 1rem;
 	font-size: 2.6rem;
 `;
 
-const StyledLink = styled(Link)`
+const ArrowLink = styled(Link)`
 	display: flex;
 	justify-content: center;
 `;

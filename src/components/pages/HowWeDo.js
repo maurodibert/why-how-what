@@ -4,14 +4,6 @@ import styled from 'styled-components';
 import { FullPageContainer } from '../styles/Containers';
 import { motion } from 'framer-motion';
 
-const HowWeDo = () => {
-	return (
-		<FullPageContainer>
-			<StyledH2 animate={{ transition: { duration: 8 } }}>Cómo logramos esto?</StyledH2>
-		</FullPageContainer>
-	);
-};
-
 const ExactaFundamental = () => {
 	const fundamentalsList = [
 		{
@@ -35,6 +27,52 @@ const ExactaFundamental = () => {
 	];
 };
 
-const StyledH2 = styled(motion.h2)`margin-bottom: 2rem;`;
+const HowWeDo = () => {
+	const fullPageVariants = {
+		hidden: {},
+		visible: {},
+		exit: {}
+	};
+
+	const animatedH1TitleVariants = {
+		hidden: {
+			y: '100vh',
+			rotate: '-90deg'
+		},
+		visible: {
+			y: 0,
+			rotate: '-90deg',
+			transition: {
+				duration: 3,
+				ease: [ 0, 0.92, 0.3, 1.7 ]
+			}
+		},
+		exit: {}
+	};
+
+	return (
+		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
+			<AnimatedH1Title variants={animatedH1TitleVariants}>
+				Cómo <br /> lo logramos?
+			</AnimatedH1Title>
+			<SubTitleDiv />
+		</FullPageContainer>
+	);
+};
+
+// Home Styles in order of apparition
+// const MainTitleDiv = styled(motion.div)`
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: flex-end;
+// `;
+const SubTitleDiv = styled(motion.div)`
+
+`;
+
+const AnimatedH1Title = styled(motion.h1)`
+	line-height: 0.9;
+	transform: rotate(-90deg);
+`;
 
 export default HowWeDo;
