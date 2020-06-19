@@ -179,7 +179,7 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 			exit="exit"
 			positionTransition
 		>
-			<MainTitleDiv
+			<MainTitleContainer
 				variants={mainTitleDivVariants}
 				onHoverStart={(e) => {
 					setUnderTextVisible(true);
@@ -197,7 +197,7 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 					tu hogar?
 				</TriggerText>
 				<TitleBottomLine variants={titleBottomLineVariants} />
-			</MainTitleDiv>
+			</MainTitleContainer>
 			<UnderTextDiv>
 				<UnderText variants={underTextVariants} animate={underTextVisible ? 'visible' : 'hidden'}>
 					hogar
@@ -269,7 +269,7 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 };
 
 // Home Styles in order of apparition
-const MainTitleDiv = styled(motion.div)`
+const MainTitleContainer = styled(motion.div)`
 	overflow: hidden;
 	height: 20rem;
 	display: flex;
