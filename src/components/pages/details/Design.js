@@ -2,7 +2,7 @@ import React from 'react';
 import ExactaVR from '../../../assets/exacta-vr.png';
 import Template from './Template';
 
-const Diseno = () => {
+const Design = () => {
 	const title = 'Diseño';
 	const list = [
 		{
@@ -24,6 +24,7 @@ const Diseno = () => {
 		'Nos apasiona la búsqueda estética como resultante: la belleza surge como efecto de una exploración esencial en la funcionalidad, en lograr con lo mínimo. Por eso el diseño se filtra en todos los procesos de lo que hacemos, desde una hoja de presupuesto hasta la organización de una reunión con un usuario interno.';
 
 	const altImage = 'Exacta VR';
+
 	return (
 		<Template
 			title={title}
@@ -36,4 +37,4 @@ const Diseno = () => {
 	);
 };
 
-export default Diseno;
+export default Design;

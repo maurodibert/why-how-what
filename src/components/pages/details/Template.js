@@ -4,10 +4,27 @@ import { FullPageContainer, FlexColumn, FlexRow } from '../../styles/Containers'
 import { StyledLi, StyledUl } from '../../styles/Lists';
 import { StyledButton } from '../../styles/Buttons';
 import styled from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
+
 
 const Template = ({ title, list, description, image, altImage, imageSize }) => {
+
+	// Animations
+	const fullPageVariants = {
+		hidden: {
+			x: '50vw'
+		},
+		visible: {
+			x: 0,
+			transition: {
+				duration: .5
+			}
+		},
+		exit: {}
+	};
+
 	return (
-		<FullPageContainer>
+		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
 			<div>
 				<h1>{title}</h1>
 				<FlexRow>
@@ -39,6 +56,7 @@ const Template = ({ title, list, description, image, altImage, imageSize }) => {
 		</FullPageContainer>
 	);
 };
+
 
 const StyledP = styled.p`margin-top: 0;`;
 const ReStyledLi = styled(StyledLi)`

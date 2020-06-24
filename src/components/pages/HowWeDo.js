@@ -36,7 +36,12 @@ const HowWeDo = () => {
 	const fullPageVariants = {
 		hidden: {},
 		visible: {},
-		exit: {}
+		exit: {
+			x: '-75vw',
+			transition: {
+				duration: 0.5
+			}
+		}
 	};
 
 	const titleVariants = {
@@ -65,7 +70,6 @@ const HowWeDo = () => {
 			y: 0,
 			transition: {
 				duration: 1,
-				delay: 1,
 
 			}
 		},
@@ -119,7 +123,6 @@ const HowWeDo = () => {
 			transition: { duration: 1 }
 		},
 		exit: {
-			x: -200
 		},
 	}
 
@@ -134,7 +137,6 @@ const HowWeDo = () => {
 			x: 0,
 			transition: { yoyo: Infinity, duration: 0.6, delay: 1 }
 		},
-
 	};
 
 	// Components
@@ -158,10 +160,9 @@ const HowWeDo = () => {
 								{rule.description}
 							</Description>
 							<ArrowDownContainer variants={arrowDownVariants}>
-								<ArrowLink to="/how-we-do">
+								<ArrowLink to="/design">
 									<ArrowDown
 										onClick={() => {
-											// setIsHowWeDoVisible(true);
 										}} />
 								</ArrowLink>
 							</ArrowDownContainer>

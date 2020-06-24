@@ -5,16 +5,20 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 
 import { MainPageContainer } from '../components/styles/Containers';
 import { AnimatePresence } from 'framer-motion';
+import Design from './pages/details/Design';
 
 function Main() {
 	const location = useLocation();
-	const [ isIntroductionMoved, setIsIntroductionMoved ] = useState(false);
-	const [ isHowWeDoVisible, setIsHowWeDoVisible ] = useState(false);
+	const [isIntroductionMoved, setIsIntroductionMoved] = useState(false);
+	const [isHowWeDoVisible, setIsHowWeDoVisible] = useState(false);
 
 	return (
 		<MainPageContainer>
 			<AnimatePresence exitBeforeEnter>
 				<Switch location={location} key={location.key}>
+					<Route path="/design">
+						<Design />
+					</Route>
 					<Route path="/how-we-do">
 						<HowWeDo />
 					</Route>
