@@ -13,9 +13,9 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 		'Domicilio habitual de una persona y en el que desarrolla su vida privada o familiar.',
 		'Ambiente familiar que se desarrolla en la vivienda habitual.'
 	];
-	const [ homeForUsIntroductionVisible, setHomeForUsIntroductionVisible ] = useState(false);
-	const [ isIntroductionHovered, setIsIntroductionHovered ] = useState(false);
-	const [ underTextVisible, setUnderTextVisible ] = useState(false);
+	const [homeForUsIntroductionVisible, setHomeForUsIntroductionVisible] = useState(false);
+	const [isIntroductionHovered, setIsIntroductionHovered] = useState(false);
+	const [underTextVisible, setUnderTextVisible] = useState(false);
 
 	// Animation variants
 	const fullPageVariants = {
@@ -156,7 +156,7 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 		}
 	};
 
-	const animatedStyledArrowDownVariants = {
+	const arrowDownVariants = {
 		hidden: {
 			opacity: 0
 		},
@@ -217,8 +217,8 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 									) : isIntroductionHovered ? (
 										'visibleHovered'
 									) : (
-										'visibleNotHovered'
-									)
+												'visibleNotHovered'
+											)
 								}
 								exit="hidden"
 								positionTransition
@@ -236,9 +236,9 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 								}}
 							>
 								{homeForUsIntroduction.map((paragraph, index) => [
-									<AnimatedP key={index} variants={animatedParagraphVariants}>
+									<AnimatedParagraph key={index} variants={animatedParagraphVariants}>
 										{paragraph}
-									</AnimatedP>
+									</AnimatedParagraph>
 								])}
 							</Introduction>
 						</IntroductionGoingLeft>
@@ -252,7 +252,7 @@ const Home = ({ isIntroductionMoved, setIsIntroductionMoved, isHowWeDoVisible, s
 			)}
 			{!isHowWeDoVisible && (
 				<ArrowDownContainer
-					variants={animatedStyledArrowDownVariants}
+					variants={arrowDownVariants}
 					animate={isIntroductionMoved ? 'visible' : 'hidden'}
 					exit="exit"
 					onClick={() => {
@@ -328,7 +328,7 @@ const Introduction = styled(motion.div)`
 	}
 `;
 
-const AnimatedP = styled(motion.p)`
+const AnimatedParagraph = styled(motion.p)`
 	font-size: 2.2rem;
 	line-height: 1;
 	margin: 0;

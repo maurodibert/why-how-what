@@ -32,13 +32,14 @@ const HowWeDo = () => {
 		}
 	];
 
+	// Animations
 	const fullPageVariants = {
 		hidden: {},
 		visible: {},
 		exit: {}
 	};
 
-	const TitleVariants = {
+	const titleVariants = {
 		hidden: {
 			y: '100vh',
 			rotate: '180deg'
@@ -55,12 +56,96 @@ const HowWeDo = () => {
 		exit: {}
 	};
 
+	const rulesContainerVariants = {
+		hidden: {
+			y: '100vh',
+
+		},
+		visible: {
+			y: 0,
+			transition: {
+				duration: 1,
+				delay: 1,
+
+			}
+		},
+		exit: {
+		}
+	}
+
+	const spring = {
+		type: "spring",
+		damping: 8,
+		stiffness: 120
+	}
+
+
+	const individualRuleContainerVariants = {
+		hidden: {},
+		visible: {},
+		exit: {}
+	}
+
+	const ruleVariants = {
+		hidden: {
+		},
+		visible: {
+			transition: { ease: 'backInOut', duration: 2 }
+		},
+		exit: {},
+		hover: {
+			x: 20,
+			transition: { duration: .5 }
+		}
+	}
+
+	const descriptionContainerVariants = {
+		hidden: {
+		},
+		visible: {
+			opacity: 1,
+			transition: {
+				duration: 2
+			}
+		},
+	}
+
+	const descriptionVariants = {
+		hidden: {
+			x: -200,
+		},
+		visible: {
+			x: 0,
+			transition: { duration: 1 }
+		},
+		exit: {
+			x: -200
+		},
+	}
+
+
+	const arrowDownVariants = {
+		hidden: {
+			x: -10,
+			opacity: 0
+		},
+		visible: {
+			opacity: 1,
+			x: 0,
+			transition: { yoyo: Infinity, duration: 0.6, delay: 1 }
+		},
+
+	};
+
+	// Components
 	const Accordion = ({ rule, i, expanded, setExpanded }) => {
 		const isOpen = i === expanded;
 
 		return (
-			<IndividualRuleContainer>
+			<IndividualRuleContainer variants={individualRuleContainerVariants} initial="hidden" animate="visible" exit="exit">
 				<Rule
+					variants={ruleVariants}
+					whileHover={isOpen ? "visible" : "hover"}
 					onClick={() => {
 						setExpanded(isOpen ? false : i);
 					}
@@ -68,14 +153,18 @@ const HowWeDo = () => {
 				</Rule>
 				<AnimatePresence>
 					{isOpen && (
-						<DescriptionContainer>
-							<Description>
+						<DescriptionContainer variants={descriptionContainerVariants} >
+							<Description variants={descriptionVariants} >
 								{rule.description}
 							</Description>
-							<ArrowLink to="/how-we-do">
-								<ArrowDown />
-							</ArrowLink>
-							<DescriptionBottomLine />
+							<ArrowDownContainer variants={arrowDownVariants}>
+								<ArrowLink to="/how-we-do">
+									<ArrowDown
+										onClick={() => {
+											// setIsHowWeDoVisible(true);
+										}} />
+								</ArrowLink>
+							</ArrowDownContainer>
 						</DescriptionContainer>
 					)}
 				</AnimatePresence>
@@ -85,11 +174,11 @@ const HowWeDo = () => {
 
 	return (
 		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
-			<MainTitleContainer>
-				<Title variants={TitleVariants}>
+			<MainTitleContainer >
+				<Title variants={titleVariants}>
 					Cómo <br /> lo logramos?
 				</Title>
-				<RulesContainer>
+				<RulesContainer variants={rulesContainerVariants} positionTransition={spring}>
 					{rulesList.map((rule, i) => {
 						return <Accordion rule={rule} i={i} expanded={expanded} setExpanded={setExpanded} />
 					}
@@ -128,7 +217,7 @@ const Rule = styled(motion.h1)`
 	font-family: 'Lobster Two', cursive;
 	font-weight: bold;
 	color: var(--red);
-	line-height: .8;
+	line-height: 1;
 	margin: 0;
 	&:hover{
 		cursor: pointer;
@@ -139,15 +228,20 @@ const DescriptionContainer = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	overflow: hidden;
 `
-const Description = styled(motion.p)``;
-
-const DescriptionBottomLine = styled(motion.div)`
-	border-bottom: 1.5px solid;
-	width: 30rem;
-	margin: 1rem 0;
+const Description = styled(motion.p)`
+	width: 38rem;
 `;
 
+const ArrowDownContainer = styled(motion.div)`
+	display: flex;
+	justify-content: center;
+	align-self: flex-end;
+	&:hover {
+		cursor: pointer;
+	}
+`;
 
 const ArrowDown = styled(MdArrowForward)`
 	font-size: 2.6rem;
