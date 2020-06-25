@@ -54,8 +54,8 @@ const HowWeDo = () => {
 			rotate: '180deg',
 
 			transition: {
-				ease: 'easeOut',
-				duration: 1
+				ease: [0, .55, .22, 1],
+				duration: 1.5
 			}
 		},
 		exit: {}
@@ -69,8 +69,8 @@ const HowWeDo = () => {
 		visible: {
 			y: 0,
 			transition: {
-				duration: 1,
-
+				ease: [0, .55, .22, 1],
+				duration: 1.5
 			}
 		},
 		exit: {
@@ -79,8 +79,8 @@ const HowWeDo = () => {
 
 	const spring = {
 		type: "spring",
-		damping: 8,
-		stiffness: 120
+		damping: 14,
+		stiffness: 220
 	}
 
 
@@ -160,7 +160,7 @@ const HowWeDo = () => {
 								{rule.description}
 							</Description>
 							<ArrowDownContainer variants={arrowDownVariants}>
-								<ArrowLink to="/design">
+								<ArrowLink to="/details">
 									<ArrowDown
 										onClick={() => {
 										}} />
@@ -220,9 +220,6 @@ const Rule = styled(motion.h1)`
 	color: var(--red);
 	line-height: 1;
 	margin: 0;
-	&:hover{
-		cursor: pointer;
-	}
 `;
 
 const DescriptionContainer = styled(motion.div)`

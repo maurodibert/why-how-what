@@ -5,7 +5,7 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 
 import { MainPageContainer } from '../components/styles/Containers';
 import { AnimatePresence } from 'framer-motion';
-import Design from './pages/details/Design';
+import Details from './pages/Details';
 
 function Main() {
 	const location = useLocation();
@@ -16,8 +16,8 @@ function Main() {
 		<MainPageContainer>
 			<AnimatePresence exitBeforeEnter>
 				<Switch location={location} key={location.key}>
-					<Route path="/design">
-						<Design />
+					<Route path="/details">
+						<Details />
 					</Route>
 					<Route path="/how-we-do">
 						<HowWeDo />
