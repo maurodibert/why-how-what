@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import './../../App.css';
 import { motion } from 'framer-motion';
 
-const GridImage = ({ column, row }) => {
+const GridImage = ({ column, row, img }) => {
 
   // Animation
   const itemVariants = {
@@ -13,18 +13,18 @@ const GridImage = ({ column, row }) => {
     transition: { duration: 2 }
 
   }
-  return <Item variants={itemVariants} whileHover='hover' column={column} row={row}></Item>
+  return <Item variants={itemVariants} whileHover='hover' column={column} row={row} img={img}></Item>
 }
 
 const Item = styled(motion.div)`
 	grid-column: ${props => props.column};
 	grid-row: ${props => props.row};
 	display: flex;
-	background:  url(exacta-vr.png);
-	background-size: cover;
+	background:  url(${props => props.img});
+  background-size: contain;
   &:hover{
-    cursor: pointer;
+  cursor: pointer;
   }
-`
+`;
 
 export default GridImage;

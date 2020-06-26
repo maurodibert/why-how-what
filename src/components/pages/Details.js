@@ -74,12 +74,17 @@ const Details = () => {
 	return (
 		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
 			<MainContainer>
-				<Item column={1} row={1}></Item>
-				<Item column={2} row={1}></Item>
-				<Item column={2} row={2}></Item>
-				<Item column={3} row={2}></Item>
-				<Item column={2} row={3}></Item>
-				<Item column={3} row={3}></Item>
+				<Item column={1} row={1} img='exacta-vr.png'></Item>
+				<Item column={2} row={1} img='exacta-pz.png'></Item>
+				<SpandedItem>
+					<Title>{detailsList[0].title}</Title>
+					<h4>{detailsList[0].descriptionTwo}</h4>
+					<h4>{detailsList[0].descriptionOne}</h4>
+				</SpandedItem>
+				<Item column={2} row={2} img='exacta-dom.png'></Item>
+				<Item column={3} row={2} img='exacta-gp.png'></Item>
+				<Item column={2} row={3} img='exacta-ct.png'></Item>
+				<Item column={3} row={3} img='exacta-pn.png'></Item>
 			</MainContainer>
 		</FullPageContainer>
 	);
@@ -95,5 +100,16 @@ const MainContainer = styled(motion.div)`
 	height: 90vh;
 	padding: 2rem 10rem;
 `;
+
+const SpandedItem = styled(motion.div)`
+	grid-column: 1;
+	grid-row: 2 / span 3;
+	display: flex;
+	flex-direction: column;
+	padding: 4rem 8rem;
+`;
+
+const Title = styled(motion.h1)`
+line-height: 1.2`;
 
 export default Details;
