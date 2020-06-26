@@ -99,6 +99,22 @@ const Details = () => {
 		}
 	}
 
+
+	const arrowDownVariants = {
+		hidden: {
+			opacity: 0
+		},
+		visible: {
+			opacity: 1,
+			y: 10,
+			transition: { yoyo: Infinity, duration: 0.6 }
+		},
+		exit: {
+			y: '200vh',
+			transition: { duration: 2 }
+		}
+	};
+
 	// Components
 	return (
 		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
@@ -106,6 +122,15 @@ const Details = () => {
 				<Item setIsVisible={setIsVisible} id={1} column={1} row={1} img='exacta-vr.png'></Item>
 				<Item setIsVisible={setIsVisible} id={2} column={2} row={1} img='exacta-pz.png'></Item>
 				<AnimatePresence>
+					{isVisible && (
+						<ArrowDownContainer
+							variants={arrowDownVariants}
+						>
+							<ArrowLink to="/how-we-do">
+								<ArrowDown />
+							</ArrowLink>
+						</ArrowDownContainer>
+					)}
 					{isVisible && (
 						<SpandedItem variants={spandedVariants} positionTransition>
 							<Title>{detailsList[isVisible - 1].title}</Title>
@@ -132,6 +157,26 @@ const MainContainer = styled(motion.div)`
 	width: 60vw;
 	height: 90vh;
 	padding: 2rem 10rem;
+`;
+
+const ArrowDownContainer = styled(motion.div)`
+	grid-column: 3;
+	grid-row: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
+const ArrowDown = styled(MdArrowDown)`
+	font-size: 2.6rem;
+`;
+
+const ArrowLink = styled(Link)`
+	display: flex;
+	justify-content: center;
 `;
 
 const SpandedItem = styled(motion.div)`
