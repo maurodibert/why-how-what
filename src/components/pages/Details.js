@@ -50,10 +50,20 @@ const Details = () => {
 
 	// Animations
 	const fullPageVariants = {
-		hidden: {},
-		visible: {},
+		hidden: {
+			x: '100vw',
+			transition: {
+				duration: 0.5
+			}
+		},
+		visible: {
+			x: 0,
+			transition: {
+				duration: 1.5
+			}
+		},
 		exit: {
-			x: '-75vw',
+			x: '100vw',
 			transition: {
 				duration: 0.5
 			}
@@ -62,7 +72,7 @@ const Details = () => {
 
 	// Components
 	return (
-		<FullPageContainer>
+		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
 			<MainContainer>
 				<Item column={1} row={1}></Item>
 				<Item column={2} row={1}></Item>
