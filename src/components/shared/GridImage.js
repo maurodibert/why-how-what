@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import './../../App.css';
 import { motion } from 'framer-motion';
 
-const GridImage = ({ column, row, img }) => {
-
+const GridImage = ({ id, column, row, img, setIsVisible }) => {
   // Animation
   const itemVariants = {
     hover: {
@@ -13,7 +12,16 @@ const GridImage = ({ column, row, img }) => {
     transition: { duration: 2 }
 
   }
-  return <Item variants={itemVariants} whileHover='hover' column={column} row={row} img={img}></Item>
+  return (
+    <Item variants={itemVariants}
+      onClick={() => {
+        setIsVisible(id)
+      }}
+      whileHover='hover'
+      column={column}
+      row={row}
+      img={img} />
+  )
 }
 
 const Item = styled(motion.div)`
@@ -21,7 +29,7 @@ const Item = styled(motion.div)`
 	grid-row: ${props => props.row};
 	display: flex;
 	background:  url(${props => props.img});
-  background-size: contain;
+  background-size: cover;
   &:hover{
   cursor: pointer;
   }
