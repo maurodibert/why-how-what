@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import MdArrowDown from 'react-ionicons/lib/MdArrowDown';
+import Item from '../shared/GridImage';
+import { Link } from 'react-router-dom';
 import { FullPageContainer } from '../styles/Containers';
 import { motion, AnimatePresence } from 'framer-motion';
-import MdArrowDown from 'react-ionicons/lib/MdArrowDown';
 
 
 const Details = () => {
@@ -61,10 +62,16 @@ const Details = () => {
 
 	// Components
 	return (
-		<MainContainer>
-			<Item0></Item0>
-			<Item8></Item8>
-		</MainContainer>
+		<FullPageContainer>
+			<MainContainer>
+				<Item column={1} row={1}></Item>
+				<Item column={2} row={1}></Item>
+				<Item column={2} row={2}></Item>
+				<Item column={3} row={2}></Item>
+				<Item column={2} row={3}></Item>
+				<Item column={3} row={3}></Item>
+			</MainContainer>
+		</FullPageContainer>
 	);
 };
 
@@ -72,33 +79,11 @@ const MainContainer = styled(motion.div)`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr;
-	column-gap: 4rem;
-	row-gap: 4rem;
+	column-gap: 1rem;
+	row-gap: 1rem;
 	width: 60vw;
-	height: 100vh;
-	padding: 10rem;
+	height: 90vh;
+	padding: 2rem 10rem;
 `;
-
-const Item0 = styled(motion.div)`
-	grid-column: 1;
-	grid-row: 1;
-	display: flex;
-	min-height: 100%;
-	background:  url(exacta-vr.png) rgba(236, 30, 30, 1);
-	background-size: cover;
-	background-blend-mode: overlay;
-	border: 3px solid black;
-`
-
-const Item8 = styled(motion.div)`
-	grid-column: 2;
-	grid-row: 2;
-	display: flex;
-	background: url(exacta-vr.png) center center/cover;
-	border: 3px solid black;
-
-`
-
-
 
 export default Details;

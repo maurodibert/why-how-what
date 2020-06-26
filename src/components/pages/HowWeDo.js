@@ -220,6 +220,9 @@ const Rule = styled(motion.h1)`
 	color: var(--red);
 	line-height: 1;
 	margin: 0;
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 const DescriptionContainer = styled(motion.div)`
