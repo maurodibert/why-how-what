@@ -32,7 +32,7 @@ const Details = () => {
 			id: 4,
 			title: 'Exacta GP',
 			descriptionOne: 'Trabajo en equipo, primero el otro y buenas prácticas. Orden. Limpieza. Puntualidad.',
-			descriptionTwo: 'Un organismo, procesos ágiles, medidos y controlados que crece y evoluciona; procesos donde todos ganamos.'
+			descriptionTwo: 'Un organismo, procesos ágiles y controlados.'
 		},
 		{
 			id: 5,
@@ -71,23 +71,53 @@ const Details = () => {
 		}
 	};
 
+	const mainContainerVariants = {
+		hidden: {},
+		visible: {
+			transition: {
+				duration: 1,
+				staggerChildren: 1
+			}
+		}
+	};
+
+	const spandedVariants = {
+		hidden: {
+			y: 40,
+			opacity: 0
+		},
+		visible: {
+			y: 0,
+			opacity: 1,
+			transition: {
+				duration: 1,
+			}
+		},
+		exit: {
+			y: -200,
+			opacity: 0
+		}
+	}
+
 	// Components
 	return (
 		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
-			<MainContainer>
+			<MainContainer variants={mainContainerVariants}>
 				<Item setIsVisible={setIsVisible} id={1} column={1} row={1} img='exacta-vr.png'></Item>
 				<Item setIsVisible={setIsVisible} id={2} column={2} row={1} img='exacta-pz.png'></Item>
-				{isVisible && (
-					<SpandedItem>
-						<Title>{detailsList[isVisible - 1].title}</Title>
-						<SubTitle>{detailsList[isVisible - 1].descriptionOne}</SubTitle>
-						<SubTitle>{detailsList[isVisible - 1].descriptionTwo}</SubTitle>
-					</SpandedItem>
-				)}
-				<Item setIsVisible={setIsVisible} id={3} column={2} row={2} img='exacta-dom.png'></Item>
-				<Item setIsVisible={setIsVisible} id={4} column={3} row={2} img='exacta-gp.png'></Item>
-				<Item setIsVisible={setIsVisible} id={5} column={2} row={3} img='exacta-ct.png'></Item>
-				<Item setIsVisible={setIsVisible} id={6} column={3} row={3} img='exacta-pn.png'></Item>
+				<AnimatePresence>
+					{isVisible && (
+						<SpandedItem variants={spandedVariants} positionTransition>
+							<Title>{detailsList[isVisible - 1].title}</Title>
+							<SubTitle>{detailsList[isVisible - 1].descriptionOne}</SubTitle>
+							<SubTitle>{detailsList[isVisible - 1].descriptionTwo}</SubTitle>
+						</SpandedItem>
+					)}
+				</AnimatePresence>
+				<Item setIsVisible={setIsVisible} id={3} column={!isVisible ? 1 : 2} row={2} img='exacta-dom.png'></Item>
+				<Item setIsVisible={setIsVisible} id={4} column={!isVisible ? 2 : 3} row={2} img='exacta-gp.png'></Item>
+				<Item setIsVisible={setIsVisible} id={5} column={!isVisible ? 1 : 2} row={3} img='exacta-ct.png'></Item>
+				<Item setIsVisible={setIsVisible} id={6} column={!isVisible ? 2 : 3} row={3} img='exacta-pn.png'></Item>
 			</MainContainer>
 		</FullPageContainer>
 	);

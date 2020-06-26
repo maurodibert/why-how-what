@@ -8,12 +8,14 @@ const GridImage = ({ id, column, row, img, setIsVisible }) => {
   const itemVariants = {
     hover: {
       filter: 'grayscale(100%)',
+      transition: { duration: .3 }
     },
-    transition: { duration: 2 }
+
 
   }
   return (
     <Item variants={itemVariants}
+      positionTransition
       onClick={() => {
         setIsVisible(id)
       }}
