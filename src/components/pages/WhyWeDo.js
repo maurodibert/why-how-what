@@ -3,15 +3,16 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import FullPageContainer from '../styles/Containers';
-import { ReactComponent as Logo } from '../../../public/logo.svg';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 
 const WhyWeDo = () => {
 	const [isLogoVisible, setIsLogoVisible] = useState(false);
 
-	setTimeout(() => {
-		setIsLogoVisible(true);
-	}, 14000);
 	// Animations
+	// setTimeout(() => {
+	// 	setIsLogoVisible(true);
+	// }, 14000);
+
 	const fullPageVariants = {
 		hidden: {
 			y: '100vh',
@@ -54,19 +55,17 @@ const WhyWeDo = () => {
 
 	return (
 		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
-			{!isLogoVisible && (
-				<FullPageColor>
-					<MainTitleContainer>
-						<SubTitle variants={mainTitleVariants}>porque <b>respiramos</b> orden.</SubTitle>
-						<SubTitle variants={mainTitleVariants}>porque vivimos <b>diseño.</b></SubTitle>
-						<SubTitle variants={mainTitleVariants}>porque <b>nos apasiona.</b></SubTitle>
-						<SubTitle variants={lastChildVariants}><i>porque podemos.</i></SubTitle>
-					</MainTitleContainer>
-				</FullPageColor>
-			)};
-			{ isLogoVisible && (
+			<FullPageColor>
+				<MainTitleContainer>
+					<SubTitle variants={mainTitleVariants}>porque <b>respiramos</b> orden.</SubTitle>
+					<SubTitle variants={mainTitleVariants}>porque vivimos <b>diseño.</b></SubTitle>
+					<SubTitle variants={mainTitleVariants}>porque <b>nos apasiona.</b></SubTitle>
+					<SubTitle variants={lastChildVariants}><i>porque podemos.</i></SubTitle>
+				</MainTitleContainer>
+			</FullPageColor>
+			{/* {isLogoVisible && (
 				<Logo></Logo>
-			)}
+			)} */}
 
 		</FullPageContainer>
 	);
