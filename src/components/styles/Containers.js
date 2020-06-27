@@ -11,7 +11,7 @@ const FullPageContainer = styled(motion.div)`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 96vh;
+	height: 100vh;
 `;
 
 const FullPageContainerFromTop = styled.div`

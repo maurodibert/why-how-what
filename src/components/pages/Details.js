@@ -64,7 +64,7 @@ const Details = () => {
 			}
 		},
 		exit: {
-			x: '100vw',
+			y: '-100vh',
 			transition: {
 				duration: 0.5
 			}
@@ -109,10 +109,6 @@ const Details = () => {
 			y: 10,
 			transition: { yoyo: Infinity, duration: 0.6 }
 		},
-		exit: {
-			y: '200vh',
-			transition: { duration: 2 }
-		}
 	};
 
 	// Components
@@ -126,7 +122,7 @@ const Details = () => {
 						<ArrowDownContainer
 							variants={arrowDownVariants}
 						>
-							<ArrowLink to="/how-we-do">
+							<ArrowLink to="/why-we-do">
 								<ArrowDown />
 							</ArrowLink>
 						</ArrowDownContainer>

@@ -77,10 +77,9 @@ const HowWeDo = () => {
 		}
 	}
 
-	const spring = {
-		type: "spring",
-		damping: 14,
-		stiffness: 220
+	const ease = {
+		ease: "easeInOut",
+		duration: 0.5
 	}
 
 
@@ -179,7 +178,7 @@ const HowWeDo = () => {
 				<Title variants={titleVariants}>
 					Cómo <br /> lo logramos?
 				</Title>
-				<RulesContainer variants={rulesContainerVariants} positionTransition={spring}>
+				<RulesContainer variants={rulesContainerVariants} positionTransition={ease}>
 					{rulesList.map((rule, i) => {
 						return <Accordion rule={rule} i={i} expanded={expanded} setExpanded={setExpanded} />
 					}
