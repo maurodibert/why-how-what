@@ -31,7 +31,9 @@ const HowWeDo = () => {
 				'Mediante la utilización de metodologías ágiles y tecnología aplicada a la gestión y comunicación, consolidamos grupos de trabajo eficaces, confiables y que disfrutan de crear.'
 		}
 	];
-
+	const [planClicked, setPlanClicked] = useState(false);
+	const [designClicked, setDesignClicked] = useState(false);
+	const [systemClicked, setSystemClicked] = useState(false);
 	// Animations
 	const fullPageVariants = {
 		hidden: {},
@@ -149,6 +151,18 @@ const HowWeDo = () => {
 					whileHover={isOpen ? "visible" : "hover"}
 					onClick={() => {
 						setExpanded(isOpen ? false : i);
+						switch (i) {
+							case 0:
+								setPlanClicked(true);
+								break;
+							case 1:
+								setDesignClicked(true);
+								break;
+							case 2:
+								setSystemClicked(true);
+								break;
+							default: return null;
+						}
 					}
 					}>{rule.title}
 				</Rule>
@@ -158,13 +172,6 @@ const HowWeDo = () => {
 							<Description variants={descriptionVariants} >
 								{rule.description}
 							</Description>
-							<ArrowDownContainer variants={arrowDownVariants}>
-								<ArrowLink to="/details">
-									<ArrowDown
-										onClick={() => {
-										}} />
-								</ArrowLink>
-							</ArrowDownContainer>
 						</DescriptionContainer>
 					)}
 				</AnimatePresence>
@@ -173,7 +180,7 @@ const HowWeDo = () => {
 	}
 
 	return (
-		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
+		<StyledFullContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
 			<MainTitleContainer >
 				<Title variants={titleVariants}>
 					Cómo <br /> lo logramos?
@@ -185,9 +192,24 @@ const HowWeDo = () => {
 					)}
 				</RulesContainer>
 			</MainTitleContainer>
-		</FullPageContainer>
+			{
+				(planClicked && designClicked && systemClicked) && (
+					<ArrowDownContainer variants={arrowDownVariants}>
+						<ArrowLink to="/details">
+							<ArrowDown
+								onClick={() => {
+								}} />
+						</ArrowLink>
+					</ArrowDownContainer>
+				)
+			}
+		</StyledFullContainer>
 	);
 };
+
+const StyledFullContainer = styled(FullPageContainer)`
+	flex-direction: column;
+`
 
 const MainTitleContainer = styled(motion.div)`
 	display: flex;
@@ -237,7 +259,8 @@ const Description = styled(motion.p)`
 const ArrowDownContainer = styled(motion.div)`
 	display: flex;
 	justify-content: center;
-	align-self: flex-end;
+	align-self: center;
+	margin-top: 10rem;
 	&:hover {
 		cursor: pointer;
 	}
