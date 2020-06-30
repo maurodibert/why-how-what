@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import './../../App.css';
 import { motion } from 'framer-motion';
 
-const GridImage = ({ id, column, row, img, setIsVisible }) => {
+const GridImage = ({ id, column, row, img, itemsState }) => {
   // Animation
   const itemVariants = {
     hover: {
@@ -17,7 +17,7 @@ const GridImage = ({ id, column, row, img, setIsVisible }) => {
     <Item variants={itemVariants}
       positionTransition
       onClick={() => {
-        setIsVisible(id)
+        return itemsState(id);
       }}
       whileHover='hover'
       column={column}

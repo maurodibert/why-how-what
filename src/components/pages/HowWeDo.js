@@ -136,7 +136,7 @@ const HowWeDo = () => {
 		visible: {
 			opacity: 1,
 			x: 0,
-			transition: { yoyo: Infinity, duration: 0.6, delay: 1 }
+			transition: { yoyo: Infinity, duration: 0.6, delay: 2 }
 		},
 	};
 

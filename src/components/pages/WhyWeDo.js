@@ -63,10 +63,6 @@ const WhyWeDo = () => {
 					<SubTitle variants={lastChildVariants}><i>porque podemos.</i></SubTitle>
 				</MainTitleContainer>
 			</FullPageColor>
-			{/* {isLogoVisible && (
-				<Logo></Logo>
-			)} */}
-
 		</FullPageContainer>
 	);
 };
