@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 const MainPageContainer = styled.div`
 	display: flex;
 	justify-content: center;
+	height: 100vh;
+	width: 100vw;
 `;
 
 const FullPageContainer = styled(motion.div)`
@@ -11,7 +13,8 @@ const FullPageContainer = styled(motion.div)`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: 100%;
+	width: 100%;
 `;
 
 const FullPageContainerFromTop = styled.div`

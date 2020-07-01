@@ -3,22 +3,16 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import FullPageContainer from '../styles/Containers';
-import { ReactComponent as Logo } from '../../assets/logo.svg';
 
 const WhyWeDo = () => {
-	const [isLogoVisible, setIsLogoVisible] = useState(false);
-
-	// Animations
-	// setTimeout(() => {
-	// 	setIsLogoVisible(true);
-	// }, 14000);
-
 	const fullPageVariants = {
 		hidden: {
 			y: '100vh',
+			height: '100%',
 		},
 		visible: {
 			y: 0,
+			height: '100%',
 			transition: {
 				ease: 'easeIn',
 				duration: 1.5,
@@ -26,6 +20,11 @@ const WhyWeDo = () => {
 				staggerChildren: 2,
 			}
 		},
+		exit: {
+			y: 0,
+			height: 0,
+			transition: { duration: 2 }
+		}
 	};
 
 	const mainTitleVariants = {
@@ -37,7 +36,7 @@ const WhyWeDo = () => {
 			transition: {
 				duration: 3,
 			}
-		}
+		},
 	}
 
 	const lastChildVariants = {
@@ -54,14 +53,16 @@ const WhyWeDo = () => {
 	}
 
 	return (
-		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
-			<FullPageColor>
-				<MainTitleContainer>
-					<SubTitle variants={mainTitleVariants}>porque <b>respiramos</b> orden.</SubTitle>
-					<SubTitle variants={mainTitleVariants}>porque vivimos <b>diseño.</b></SubTitle>
-					<SubTitle variants={mainTitleVariants}>porque <b>nos apasiona.</b></SubTitle>
-					<SubTitle variants={lastChildVariants}><i>porque podemos.</i></SubTitle>
-				</MainTitleContainer>
+		<FullPageContainer >
+			<FullPageColor variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
+				<Link to='/trademark'>
+					<MainTitleContainer>
+						<SubTitle variants={mainTitleVariants}>porque <b>respiramos</b> orden.</SubTitle>
+						<SubTitle variants={mainTitleVariants}>porque vivimos <b>diseño.</b></SubTitle>
+						<SubTitle variants={mainTitleVariants}>porque <b>nos apasiona.</b></SubTitle>
+						<SubTitle variants={lastChildVariants}><i>porque podemos.</i></SubTitle>
+					</MainTitleContainer>
+				</Link>
 			</FullPageColor>
 		</FullPageContainer>
 	);
@@ -73,7 +74,7 @@ const FullPageColor = styled(motion.div)`
 	align-items: center;
 	justify-content: center;
 	background: var(--red);
-	height: 100vh;
+	height: 100%;
 	width: 100vw;
 	margin: 0;
 `;

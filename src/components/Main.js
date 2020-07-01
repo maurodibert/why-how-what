@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Home from './pages/Home';
 import HowWeDo from './pages/HowWeDo';
 import { Route, Switch, useLocation } from 'react-router-dom';
-
 import { MainPageContainer } from '../components/styles/Containers';
 import { AnimatePresence } from 'framer-motion';
+import Trademark from './pages/Trademark';
 import Details from './pages/Details';
 import WhyWeDo from './pages/WhyWeDo';
 
@@ -17,6 +17,9 @@ function Main() {
 		<MainPageContainer>
 			<AnimatePresence exitBeforeEnter>
 				<Switch location={location} key={location.key}>
+					<Route path="/trademark">
+						<Trademark />
+					</Route>
 					<Route path="/why-we-do">
 						<WhyWeDo />
 					</Route>
