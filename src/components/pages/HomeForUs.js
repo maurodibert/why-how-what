@@ -1,9 +1,5 @@
-import React, { useState } from 'react';
-
-import { FlexRow } from '../styles/Containers';
-import { StyledLi, StyledUl } from '../styles/Lists';
+import React from 'react';
 import styled from 'styled-components';
-
 import { motion } from 'framer-motion';
 
 const HomeForUs = ({ isUserOutputMoved }) => {

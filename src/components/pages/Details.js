@@ -4,7 +4,7 @@ import MdArrowDown from 'react-ionicons/lib/MdArrowDown';
 import Item from '../shared/GridImage';
 import { Link } from 'react-router-dom';
 import { FullPageContainer } from '../styles/Containers';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 
 const Details = () => {
@@ -16,6 +16,12 @@ const Details = () => {
 	const [fiveClicked, setFiveClicked] = useState(false);
 	const [sixClicked, setSixClicked] = useState(false);
 
+	const noClickedYet = !(oneClicked
+		|| twoClicked
+		|| threeClicked
+		|| fourClicked
+		|| fiveClicked
+		|| sixClicked);
 
 	const itemsState = (id) => {
 		setItemClicked(id);
@@ -85,32 +91,16 @@ const Details = () => {
 	// Animations
 	const fullPageVariants = {
 		hidden: {
-			x: '100vw',
-			transition: {
-				duration: 0.5
-			}
+			x: 2000,
 		},
 		visible: {
 			x: 0,
-			transition: {
-				duration: 1.5
-			}
+			transition: { ease: 'easeInOut', duration: 1.5 }
 		},
 		exit: {
-			y: '-100vh',
-			transition: {
-				duration: 0.5
-			}
-		}
-	};
+			y: 2000,
+			transition: { ease: 'easeInOut', duration: 1.5 }
 
-	const mainContainerVariants = {
-		hidden: {},
-		visible: {
-			transition: {
-				duration: 1,
-				staggerChildren: 1
-			}
 		}
 	};
 
@@ -132,7 +122,7 @@ const Details = () => {
 		}
 	}
 
-	const BackgroundCoverVariants = {
+	const ArrowAlignerVariants = {
 		hidden: {
 			opacity: 0
 		},
@@ -155,40 +145,36 @@ const Details = () => {
 	// Components
 	return (
 		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
-			<MainContainer variants={mainContainerVariants}>
-				<Item itemsState={itemsState} id={1} column={itemClicked == 1 ? 1 : 2} row={1} img='exacta-vr.png'></Item>
-				<Item itemsState={itemsState} id={2} column={itemClicked == 2 ? 2 : 3} row={1} img='exacta-pz.png'></Item>
-				<AnimatePresence>
-
-					{itemClicked !== 0 && (
-						<SpandedItem variants={spandedVariants} positionTransition>
-							<Title>{detailsList[itemClicked - 1].title}</Title>
-							<SubTitle>{detailsList[itemClicked - 1].descriptionOne}</SubTitle>
-							<SubTitle>{detailsList[itemClicked - 1].descriptionTwo}</SubTitle>
-							{(oneClicked
-								&& twoClicked
-								&& threeClicked
-								&& fourClicked
-								&& fiveClicked
-								&& sixClicked) && (
-									<BackgroundCover variants={BackgroundCoverVariants}>
-
-										<ArrowDownContainer
-											variants={arrowDownVariants}
-										>
-											<ArrowLink to="/why-we-do">
-												<ArrowDown />
-											</ArrowLink>
-										</ArrowDownContainer>
-									</BackgroundCover>
-								)}
-						</SpandedItem>
-					)}
-				</AnimatePresence>
-				<Item itemsState={itemsState} id={3} column={2} row={2} img='exacta-dom.png'></Item>
-				<Item itemsState={itemsState} id={4} column={itemClicked == 4 ? 3 : 2} row={2} img='exacta-gp.png'></Item>
-				<Item itemsState={itemsState} id={5} column={itemClicked == 5 ? 3 : 3} row={3} img='exacta-ct.png'></Item>
-				<Item itemsState={itemsState} id={6} column={itemClicked == 6 ? 2 : 3} row={3} img='exacta-pn.png'></Item>
+			<MainContainer>
+				<Item itemsState={itemsState} id={1} column={itemClicked === 1 ? 1 : 2} row={1} img='exacta-vr.jpg'></Item>
+				<Item itemsState={itemsState} id={2} column={itemClicked === 2 ? 2 : 3} row={1} img='exacta-pz.jpg'></Item>
+				{itemClicked !== 0 && (
+					<SpandedItem variants={spandedVariants} positionTransition>
+						<Title>{detailsList[itemClicked - 1].title}</Title>
+						<SubTitle>{detailsList[itemClicked - 1].descriptionOne}</SubTitle>
+						<SubTitle>{detailsList[itemClicked - 1].descriptionTwo}</SubTitle>
+						{(oneClicked
+							&& twoClicked
+							&& threeClicked
+							&& fourClicked
+							&& fiveClicked
+							&& sixClicked) && (
+								<ArrowAligner variants={ArrowAlignerVariants}>
+									<ArrowDownContainer
+										variants={arrowDownVariants}
+									>
+										<ArrowLink to="/why-we-do">
+											<ArrowDown />
+										</ArrowLink>
+									</ArrowDownContainer>
+								</ArrowAligner>
+							)}
+					</SpandedItem>
+				)}
+				<Item itemsState={itemsState} id={3} column={noClickedYet ? 1 : 3} row={2} img='exacta-dom.jpg'></Item>
+				<Item itemsState={itemsState} id={4} column={itemClicked === 4 ? 3 : 2} row={2} img='exacta-gp.jpg'></Item>
+				<Item itemsState={itemsState} id={5} column={itemClicked === 5 ? 3 : 3} row={3} img='exacta-ct.jpg'></Item>
+				<Item itemsState={itemsState} id={6} column={itemClicked === 6 ? 2 : 3} row={3} img='exacta-pn.jpg'></Item>
 			</MainContainer>
 		</FullPageContainer>
 	);
@@ -200,16 +186,18 @@ const MainContainer = styled(motion.div)`
 	grid-template-rows: 1fr 1fr 1fr;
 	column-gap: 1rem;
 	row-gap: 1rem;
-	width: 50vw;
+	width: 60vw;
 	height: 90vh;
 	padding: 2rem 10rem;
 `;
 
-const BackgroundCover = styled(motion.div)`
+const ArrowAligner = styled(motion.div)`
 	background-color: white;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	align-self: flex-start;
+
 `
 
 const ArrowDownContainer = styled(motion.div)`
@@ -218,7 +206,7 @@ const ArrowDownContainer = styled(motion.div)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	z-index: 1000;
+	margin-top: 5rem;
 	&:hover {
 		cursor: pointer;
 	}

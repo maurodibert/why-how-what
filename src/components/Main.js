@@ -17,10 +17,10 @@ function Main() {
 
 	return (
 		<MainPageContainer>
-			<AnimatePresence exitBeforeEnter>
-				<Media query="(min-width: 1024px)">
-					{matches =>
-						matches ? (
+			<Media query="(min-width: 1024px)">
+				{matches =>
+					matches ? (
+						<AnimatePresence exitBeforeEnter>
 							<Switch location={location} key={location.key}>
 								<Route path="/trademark">
 									<Trademark />
@@ -43,17 +43,19 @@ function Main() {
 									/>
 								</Route>
 							</Switch>
-						) : (
+						</AnimatePresence>
+					) : (
+							<AnimatePresence>
 								<Switch location={location} key={location.key}>
 									<Route path="/">
 										<HomeSmartphone />
 									</Route>
 								</Switch>
-							)
-					}
-				</Media>
+							</AnimatePresence>
+						)
+				}
+			</Media>
 
-			</AnimatePresence>
 		</MainPageContainer>
 	);
 }
