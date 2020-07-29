@@ -21,7 +21,7 @@ const HowWeDo = () => {
 			title: 'diseño',
 			functionTitle: 'design',
 			description:
-				'Desde la escucha atenta con el usuario, compartiendo lo que imagina como ideal y en un proceso de interacción, juego y exploración, plasmamos modelos totalmente immersivos, para que pueda previsualizar el proyecto que desea.'
+				'Desde la escucha atenta con el usuario, compartiendo lo que imagina como ideal y en un proceso de interacción, juego y exploración, plasmamos modelos totalmente inmersivos, para que pueda previsualizar el proyecto que desea.'
 		},
 		{
 			url: '/sistema',

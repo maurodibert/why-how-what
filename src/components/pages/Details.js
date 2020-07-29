@@ -65,7 +65,7 @@ const Details = () => {
 		{
 			id: 3,
 			title: 'Exacta DOM',
-			descriptionOne: 'Hogares como organismos indepentientes y automatizados.',
+			descriptionOne: 'Hogares como organismos independientes y automatizados.',
 			descriptionTwo: 'El tiempo como recurso invaluable; tu hogar como constante creador.'
 		},
 		{
@@ -78,13 +78,13 @@ const Details = () => {
 			id: 5,
 			title: 'Exacta CT',
 			descriptionOne: 'Cuentas transparentes en todo momento, accesibles desde cualquier dispositivo.',
-			descriptionTwo: 'Sistema semanal de reporte de procesos. Cada peso a la vista de su dueño.'
+			descriptionTwo: 'Sistema semanal de reporte de procesos. Cuentas claras, siempre.'
 		},
 		{
 			id: 6,
 			title: 'Exacta PN',
 			descriptionOne: 'Desde el final, deconstruimos paso a paso hasta el punto cero.',
-			descriptionTwo: 'Margen de errores controlado y previsible. Inversión, no gasto. Cada recurso cuenta.'
+			descriptionTwo: 'Margen de errores controlado y previsible. Inversión. Cada recurso cuenta.'
 		},
 	];
 

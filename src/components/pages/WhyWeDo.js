@@ -9,16 +9,16 @@ const WhyWeDo = () => {
 		hidden: {
 			height: 0,
 			transition: {
-				ease: 'easeIn',
+				ease: 'easeInOut',
 				duration: 1,
-				delayChildren: 2,
-				staggerChildren: 2,
+				// delayChildren: 1,
+				staggerChildren: 1,
 			}
 		},
 		visible: {
 			height: '100%',
 			transition: {
-				ease: 'easeIn',
+				ease: 'easeInOut',
 				duration: 1,
 				delayChildren: 2,
 				staggerChildren: 2,
