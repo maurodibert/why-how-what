@@ -146,14 +146,23 @@ const Details = () => {
 	return (
 		<FullPageContainer variants={fullPageVariants} initial="hidden" animate="visible" exit="exit">
 			<MainContainer>
-				<Item itemsState={itemsState} id={1} column={itemClicked === 1 ? 1 : 2} row={1} img='exacta-vr.jpg'></Item>
-				<Item itemsState={itemsState} id={2} column={itemClicked === 2 ? 2 : 3} row={1} img='exacta-pz.jpg'></Item>
+				<Item itemsState={itemsState} id={1} column={2} row={1} img='exacta-vr.jpg'></Item>
+				<Item itemsState={itemsState} id={2} column={3} row={1} img='exacta-pz.jpg'></Item>
 				{itemClicked !== 0 && (
 					<SpandedItem variants={spandedVariants} positionTransition>
 						<Title>{detailsList[itemClicked - 1].title}</Title>
 						<SubTitle>{detailsList[itemClicked - 1].descriptionOne}</SubTitle>
 						<SubTitle>{detailsList[itemClicked - 1].descriptionTwo}</SubTitle>
-						{(oneClicked
+						<ArrowAligner variants={ArrowAlignerVariants}>
+							<ArrowDownContainer
+								variants={arrowDownVariants}
+							>
+								<ArrowLink to="/why-we-do">
+									<ArrowDown />
+								</ArrowLink>
+							</ArrowDownContainer>
+						</ArrowAligner>
+						{/* {(oneClicked
 							&& twoClicked
 							&& threeClicked
 							&& fourClicked
@@ -168,13 +177,13 @@ const Details = () => {
 										</ArrowLink>
 									</ArrowDownContainer>
 								</ArrowAligner>
-							)}
+							)} */}
 					</SpandedItem>
 				)}
 				<Item itemsState={itemsState} id={3} column={noClickedYet ? 1 : 3} row={2} img='exacta-dom.jpg'></Item>
-				<Item itemsState={itemsState} id={4} column={itemClicked === 4 ? 3 : 2} row={2} img='exacta-gp.jpg'></Item>
-				<Item itemsState={itemsState} id={5} column={itemClicked === 5 ? 3 : 3} row={3} img='exacta-ct.jpg'></Item>
-				<Item itemsState={itemsState} id={6} column={itemClicked === 6 ? 2 : 3} row={3} img='exacta-pn.jpg'></Item>
+				<Item itemsState={itemsState} id={4} column={2} row={2} img='exacta-gp.jpg'></Item>
+				<Item itemsState={itemsState} id={5} column={2} row={3} img='exacta-ct.jpg'></Item>
+				<Item itemsState={itemsState} id={6} column={3} row={3} img='exacta-pn.jpg'></Item>
 			</MainContainer>
 		</FullPageContainer>
 	);
